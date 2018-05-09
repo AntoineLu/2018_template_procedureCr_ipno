@@ -39,6 +39,8 @@ Résumé du fichier que l'on crée qui s'affichera sur la page de garde, restez 
 Fichier répertoriant les références bibliographiques au format BibTeX.
 #### contenu.tex
 Le contenu à proprement parler du document, on utilise les balises \chapter{}, \section{} et autres commandes LaTeX.
+##### annexes.tex
+Contient les annexes, écrivez en utilisant la même structure que pour le corps. La numérotation sera effectuée automatiquement et différemment des sections précédent l'annexe.
 
 ## Recommandations, conseils et instructions
 ### Conseils d'ordre général
