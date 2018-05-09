@@ -63,4 +63,4 @@ Utilisez la recherche et remplacement CTRL + F, _cf._ documentation pour d'autre
 La plupart des références bibliographiques peuvent-être trouvées sur Google Scholar, Mendeley... en choisissant d'exporter en BIB.
  Une référence se présente sous cette forme:
         ```@type{tag, title = {titre}, author = {auteur}, year = {année}, month = mois {jan,feb...}, <d'autres paramètres spécifiques aux différents types>}```
-        Une référence est citée en utilisant la commande ```\cite{tag}```, les références peuvent-être combinées ```\cite{tag1,tag2}```
+        Une référence est citée en utilisant la commande ```\cite{tag}```, les références peuvent-être combinées ```\cite{tag1,tag2}```.
