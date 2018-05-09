@@ -28,7 +28,7 @@ est la page de garde.
 est le fichier de configuration pour une bibliographie s'affichant en français.
     
 ### Autres fichier du projet
-Les seuls fichiers qui nécessitent une modification sont normalement ceux listés à la racine. Chacun contiennent des instructions en en-tête en commentaire LaTeX (%). Voici une liste avec description succincte.
+Les seuls fichiers qui nécessitent une modification sont normalement ceux listés à la racine. Chacun contiennent des instructions en en-tête en commentaire LaTeX (```%```). Voici une liste avec description succincte.
 #### configuration.tex
 Fichier de configuration du document où on indique l'auteur, le titre...
 #### histModifications.tex
