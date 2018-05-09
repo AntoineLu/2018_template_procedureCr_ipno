@@ -1,0 +1,145 @@
+\chapter{Matrices de covariance}
+\label{chapter:MatricesDeCovariance}
+Le module Python \texttt{\href{https://docs.scipy.org/doc/scipy/reference/optimize.html}{scipy.optimize}} permet d'optimiser les paramètres d'ajustement d'une série de données expérimentales par une fonction analytique via plusieurs algorithmes de calculs grâce à la fonction \texttt{curve\_fit}. J'utilise ici la méthode des moindre carrés (fonction \texttt{curve\_fit} sans paramètres). Cette fonction retourne également la matrice de covariance des paramètres à partir de laquelle il est possible de calculer l'erreur sur les paramètres d'ajustement. Ainsi pour une série de données $(x,y)$ potentiellement reliée par la fonction $y = f(x, a_1 \dots a_n)$, la fonction calcule les paramètres $(a_1 \dots a_n)$ et renvoie la matrice de covariance associée à partir de laquelle il est possible de calculer l'erreur sur chacun des paramètres à partir des éléments diagonaux de la matrice de covariance qui sont la variance associée à chaque paramètre élevée au carré. Par exemple: l'erreur sur $a_1$ est $\delta a_1 = \texttt{numpy.sqrt(numpy.diag(pcov))[1]}$ où \texttt{pcov} est la dite matrice de variance-covariance telle que:
+\[\texttt{pcov} = \Sigma = \left( \begin{matrix}u_{a_1}^2 & u_{a_1a_2}^2 & \cdots & u_{a_1\dots a_n}^2 \\ u_{a_2a_1}^2 & u_{a_2}^2 & \cdots & u_{a_2\dots a_n}^2 \\ \vdots & & \ddots & \vdots \\ u_{a_n\dots a_1}^2 & u_{a_n\dots a_2}^2 & \cdots & u_{a_n}^2 \end{matrix}\right)\]
+La fonction \texttt{numpy.diag} renvoie un vecteur des éléments diagonaux d'une matrice.
+
+Seront alors listées ci-après les matrices de covariance ayant été générées lors des différents ajustements.
+
+\section{Erreur d'ajustements lors de l'expérience en vide statique}
+Toutes les données de la partie \ref{section:videStatique} sont interpolées par des relations linéaires telles que $y = ax + b$.
+
+\subsection{Sans les capots}
+\subsubsection{Interpolation de $P_\text{cav}$}
+$a = \SI{+6.216(97)e-07}{\milli\bar\per\minute}$ et $b = \SI{-3.55(24)e-06}{\milli\bar}$
+\[
+\Sigma = \left(
+\begin{matrix}
+\num{9.48794411e-17} & \num{-2.07153445e-15}\\
+\num{-2.07153445e-15} & \num{5.96001014e-14}
+\end{matrix}\right)
+\]
+Données brutes (Python):
+\begin{lstlisting}[language = Python]
+numpy.array([[9.48794411e-17,-2.07153445e-15],[-2.07153445e-15,5.96001014e-14]])
+\end{lstlisting}
+
+\subsubsection{Interpolation de $P_\text{HV}$}
+$a = \SI{+6.78(13)e-07}{\milli\bar\per\minute}$ et $b = \SI{-3.69(34)e-06}{\milli\bar}$
+\[
+\Sigma = \left(
+\begin{matrix}
+\num{1.79351257e-16} & \num{-3.91583576e-15}\\
+\num{-3.91583576e-15} & \num{1.12662481e-13}
+\end{matrix}\right)
+\]
+Données brutes (Python):
+\begin{lstlisting}[language = Python]
+numpy.array([[1.79351257e-16,-3.91583576e-15],[-3.91583576e-15,1.12662481e-13]])
+\end{lstlisting}
+
+\subsubsection{Interpolation de $P_\text{RGA}$}
+$a = \SI{+3.530(31)e-07}{\milli\bar\per\minute}$ et $b = \SI{+7.87(49)e-07}{\milli\bar}$
+\[
+\Sigma = \left(
+\begin{matrix}
+\num{6.15006176e-15} & \num{-1.34276348e-13}\\
+\num{-1.34276348e-13} & \num{3.86326375e-12}
+\end{matrix}\right)
+\]
+Données brutes (Python):
+\begin{lstlisting}[language = Python]
+numpy.array([[6.15006176e-15,-1.34276348e-13],[-1.34276348e-13,3.86326375e-12]])
+\end{lstlisting}
+
+\subsection{Capots à \SI{10}{\milli\meter} de la bride}
+\subsubsection{Interpolation de $P_\text{cav}$}
+$a = \SI{+3.530(31)e-07}{\milli\bar\per\minute}$ et $b = \SI{+7.87(49)e-07}{\milli\bar}$
+\[
+\Sigma = \left(
+\begin{matrix}
+\num{9.34057896e-18} & \num{-1.16757236e-16}\\
+\num{-1.16757236e-16} & \num{2.37776117e-15}
+\end{matrix}\right)
+\]
+Données brutes (Python):
+\begin{lstlisting}[language = Python]
+numpy.array([[9.34057896e-18,-1.16757236e-16],[-1.16757236e-16,2.37776117e-15]])
+\end{lstlisting}
+
+\subsubsection{Interpolation de $P_\text{HV}$}
+$a = \SI{+3.555(55)e-07}{\milli\bar\per\minute}$ et $b = \SI{+1.065(88)e-06}{\milli\bar}$
+\[
+\Sigma = \left(
+\begin{matrix}
+\num{3.03123581e-17} & \num{-3.78904480e-16}\\
+\num{-3.78904480e-16} & \num{7.71638973e-15}
+\end{matrix}\right)
+\]
+Données brutes (Python):
+\begin{lstlisting}[language = Python]
+numpy.array([[3.03123581e-17,-3.78904480e-16],[-3.78904480e-16,7.71638973e-15]])
+\end{lstlisting}
+
+\subsubsection{Interpolation de $P_\text{RGA}$}
+$a = \SI{+1.688(35)e-06}{\milli\bar\per\minute}$ et $b = \SI{+1.65(55)e-06}{\milli\bar}$
+\[
+\Sigma = \left(
+\begin{matrix}
+\num{1.19971780e-15} & \num{-1.49964726e-14}\\
+\num{-1.49964726e-14} & \num{3.05403141e-13}
+\end{matrix}\right)
+\]
+Données brutes (Python):
+\begin{lstlisting}[language = Python]
+numpy.array([[1.19971780e-15,-1.49964726e-14],[-1.49964726e-14,3.05403141e-13]])
+\end{lstlisting}
+
+\subsection{Capots à \SI{1}{\milli\meter} de la bride}
+\subsubsection{Interpolation de $P_\text{cav}$}
+$a = \SI{+3.80(14)e-07}{\milli\bar\per\minute}$ et $b = \SI{+5.2(21)e-07}{\milli\bar}$
+\[
+\Sigma = \left(
+\begin{matrix}
+\num{2.08385209e-16} & \num{-2.23805711e-15}\\
+\num{-2.23805711e-15} & \num{4.23017793e-14}
+\end{matrix}\right)
+\]
+Données brutes (Python):
+\begin{lstlisting}[language = Python]
+numpy.array([[2.08385209e-16,-2.23805711e-15],[-2.23805711e-15,4.23017793e-14]])
+\end{lstlisting}
+
+\subsubsection{Interpolation de $P_\text{HV}$}
+$a = \SI{+3.94(10)e-07}{\milli\bar\per\minute}$ et $b = \SI{+9.6(14)e-07}{\milli\bar}$
+\[
+\Sigma = \left(
+\begin{matrix}
+\num{1.03452435e-16} & \num{-1.11107914e-15}\\
+\num{-1.11107914e-15} & \num{2.10006377e-14}
+\end{matrix}\right)
+\]
+Données brutes (Python):
+\begin{lstlisting}[language = Python]
+numpy.array([[1.03452435e-16,-1.11107914e-15],[-1.11107914e-15,2.10006377e-14]])
+\end{lstlisting}
+
+\subsubsection{Interpolation de $P_\text{RGA}$}
+$a = \SI{+1.770(87)e-06}{\milli\bar\per\minute}$ et $b = \SI{+1.3(12)e-06}{\milli\bar}$
+\[
+\Sigma = \left(
+\begin{matrix}
+\num{7.48804249e-15} & \num{-8.04215699e-14}\\
+\num{-8.04215699e-14} & \num{1.52005758e-12}
+\end{matrix}\right)
+\]
+Données brutes (Python):
+\begin{lstlisting}[language = Python]
+numpy.array([[7.48804249e-15,-8.04215699e-14],[-8.04215699e-14,1.52005758e-12]])
+\end{lstlisting}
+
+% \chapter{Scripts Python}
+% Ci-après les scripts Python ayant servi au calcul des résultats et au tracé des différentes courbes.
+
+% \section{Pompage}
+% \lstinputlisting[language=Python]{FichiersAnnexes/routinePython_descentePression.py}%firstline=37, lastline=45 peuvent-être utiles.

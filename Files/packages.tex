@@ -1,0 +1,115 @@
+% PACKAGES UTILISÉS
+% Vous pouvez ajouter des packages si besoin
+% Évitez les packages trop exotiques ou connus pour poser des problèmes/incompatibilités
+
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}%marges de la page
+
+\usepackage[T1]{fontenc}%,OT1 ?
+\usepackage[utf8x]{inputenc}
+\usepackage{lmodern}
+\usepackage{xstring}
+
+%Nouveaux styles chapitres qui enlève le gros "CHAPITRE"
+\usepackage{titlesec}
+\titleformat{\chapter}[hang]{\bf\huge}{\thechapter}{2pc}{}
+
+\usepackage{amsmath}
+\usepackage{microtype}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathdots}
+
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage{caption}%nouvelles options pour les légendes
+\captionsetup{
+    width = .93\textwidth
+}
+
+\usepackage{siunitx}%affichage des nombres à virgules et des unités, consulter la documentation en ligne
+\sisetup{
+    %separate-uncertainty,%cf la documentation du package
+    detect-family,
+    alsoload = synchem,
+    locale = FR,
+    scientific-notation = false,
+    exponent-product = \ensuremath{{}\cdot{}},%\times,
+    inter-unit-product = \ensuremath{{}\cdot{}},
+    range-units = single,
+    list-units = single
+}
+
+\usepackage{graphicx}
+
+\usepackage{tikz}%dessiner en LaTeX
+
+\usepackage{scrextend}
+
+\usepackage{pdfpages}%pour inclure des pages entières de pdf
+
+\usepackage{framed}%environnements encadrés
+
+\usepackage{hyperref} %permet de cliquer sur le sommaire et les figures et liens cliquables
+
+\usepackage[version=4]{mhchem} %affichage des formules chimiques
+
+\usepackage{ulem}%sous-lignage et sur-lignage
+
+\usepackage{pgfplots} %plots directement dans latex
+\pgfplotsset{height = 8cm, width = 6.5in}
+%\usepgfplotslibrary{external}%convertir en image
+%\tikzexternalize%convertit les plots en image
+
+\usepackage[all]{hypcap}
+
+\usepackage{float}
+\floatplacement{figure}{!h!tbp}%placement par défaut des figures !h!tbp ou H pour ici (fort)
+
+\usepackage{babel}%langues
+\frenchbsetup{StandardLists=true}
+
+% Définition des en-tête
+\usepackage{fancyhdr}
+%\pagestyle{fancy}
+%\fancyhead[C]{} 
+%\fancyhead[L]{}
+%\fancyhead[R]{}
+
+\usepackage[xindy, toc, nopostdot, nogroupskip]{glossaries}%glossaires
+%\makeglossaries
+\loadglsentries{glossaire}
+
+% Méta-données du fichier, package hyperref (consulter documentation pour plus de détails)
+\hypersetup{
+    pdfauthor=\redacteur,
+    pdftitle=\titre,
+    pdfsubject=\type,
+    pdfkeywords={Institut de physique nucléaire d'Orsay},
+    pdfproducer={pdfLaTeX},
+    pdfcreator={pdfLaTeX with hyperref package via ShareLaTeX},
+    pdfdisplaydoctitle=true
+}
+
+% Configuration du langage de programmation si l'on souhaite importer un unique language (cf. doc listings)
+\usepackage{textcomp,upquote,listings}%Pour lister du code informatique, cf. doc
+\lstset{
+    %language=Maple,% Choisir le langage de programmation (peut-être choisi individuellement à chaque citation).
+    keywordstyle=\textbf,
+    numbers=left,
+    numbersep=5pt,
+    basicstyle=\small,
+    numberstyle=\tiny,
+    upquote=true,
+    showstringspaces=false,
+    %inputencoding=utf8,
+    showspaces=false
+}
+%\lstset{literate={->}{{$\rightarrow$}}1 {*}{{$\cdot$}}1}% Pour remplacer des caractères dans des lignes de code
+
+%\usepackage{fontspec}
+%\setmainfont{DejaVu Serif}
+%\setmonofont{DejaVu Sans Mono}
+
+%\usepackage{cmbright}
+
+\usepackage{layouts}

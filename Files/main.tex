@@ -1,0 +1,16 @@
+\documentclass[french, 11pt, a4paper, titlepage]{report}
+\input{configuration.tex}
+\input{Files/commandes.tex}
+\input{Files/packages.tex}
+
+\begin{document}
+    \input{Files/titlepage.tex}
+    \tableofcontents
+    \newpage
+    \input{contenu.tex}
+    \bibliographystyle{Files/unsrt-fr}%pour le français, sinon "unsrt"
+    \bibliography{bibliographie}
+    \addcontentsline{toc}{chapter}{Bibliographie}
+    \appendix
+    \input{annexes.tex}
+\end{document}

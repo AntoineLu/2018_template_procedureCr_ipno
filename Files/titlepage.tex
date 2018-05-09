@@ -1,0 +1,57 @@
+% PAGE DE GARDE
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\newcommand{\hsp}{\hspace{20pt}}
+\newcommand{\HRule}{\rule{\linewidth}{0.3mm}}
+\newcommand{\hsc}[1]{{\footnotesize\MakeUppercase{#1}}}
+%%
+\makeatletter
+\begin{titlepage}
+    \thispagestyle{empty}
+    \begin{sffamily}
+        \includegraphics[width=22mm]{Files/Logos/logo_cnrs.pdf}\hfill\includegraphics[height =22mm]{Files/Logos/logo_ipn.png}
+        \begin{center}
+            {\Huge \expandafter\MakeUppercase\expandafter{\type}}\\[1.5cm]
+            \begin{framed}
+                \begin{minipage}[c]{\textwidth}%2\fboxsep%la taille de la bordure de fbox?
+                    {\LARGE \hsc{Titre:} \expandafter{\titre}.}
+                    \newline
+                    \hsc{Date:} \datee\newline
+                    \hsc{Version:} \version $~\vert~$ \hsc{Atrium:} \atrium $~\vert~$  \hsc{Référence:} \reference $~\vert~$  \hsc{v:} \vv\newline 
+                    \texttt{C\hsc{nrs}-IPN-UMR8608} $~\vert~$ \hsc{Diffusion:} \diffusion\vspace{1em}
+                    
+                    \hsc{Description ou résumé:}
+                    \input{resume.tex}
+                \end{minipage}
+            \end{framed}
+        \end{center}
+        
+        \vspace{1.5cm}
+        
+        \begin{center}   
+            \begin{tabular}{|p{.3\textwidth}|p{.3\textwidth}|p{.3\textwidth}|}
+                \hline
+                \rule{0pt}{15pt}\hsc{Rédacteur} & \hsc{Vérificateur} & \hsc{Assurance qualité}\\
+                \hline
+                \rule{0pt}{15pt}\href{mailto:\mailRedacteur}{\redacteur} & \href{mailto:\mailVerificateur}{\verificateur} & \href{mailto:\mailAQ}{\AQ}\\
+                \hline
+                \rule{0pt}{50pt}&&\\
+                \hline
+            \end{tabular}
+        \end{center}
+        \vspace{1.5cm}
+        \begin{center}
+            \hsc{Historique des modifications}
+            \begin{tabular}{|r|l|p{.5\textwidth}|r|}
+                \hline
+                \rule{0pt}{15pt}\hsc{Version} & \hsc{Date} & \hsc{Nature} & \hsc{Référence}\\
+                \hline
+                \input{histModifications.tex}
+            \end{tabular}
+        \end{center}
+        \vfill
+        \begin{flushleft}
+            {\tiny Version 1 de la mise en page.}
+        \end{flushleft}
+    \end{sffamily}
+\end{titlepage}

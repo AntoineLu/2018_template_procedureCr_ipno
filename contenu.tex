@@ -1,0 +1,345 @@
+\chapter{Introduction -- Objectif}
+Lors des recuits de cavité, la pression globale du four augmente, passant d'environ \SIrange[range-units = single]{e-6}{2e-5}{\milli\bar} pendant environ une heure, le recuit de la cavité \texttt{HB01} du CEA Saclay le 12 mars 2018 (figure \ref{fig:recuitHB01_plotFour}) permet d'apprécier cette remontée de pression. Notons également que cette valeur est équivalente pour des cavités de type spoke-\textsc{Myrrha} équipées de capots de protection.
+\begin{figure}
+    \centering
+    \includegraphics[width = \textwidth]{Figures/recuitHB01_plotFour.PNG}
+    \caption[Cycle thermique du recuit de la cavité \texttt{HB01}.]{Capture d'écran du graphique imprimé automatiquement à la fin d'une recette de recuit. -- Recuit de la cavité \texttt{HB01}, la phase de refroidissement n'est pas enregistrée par le four dans ce fichier.}
+    \label{fig:recuitHB01_plotFour}
+\end{figure}
+Puisqu'il n'existe pas de mesure de la pression à l'intérieur de la cavité au cours du recuit, on est en droit de se poser plusieurs questions:
+\begin{itemize}
+    \item La pression mesurée par les jauges du four correspond-t-elle à la pression régnant au sein de la cavité?
+    \item Si non, la pression s'équilibre-t-elle à la fin du recuit? À quel point les capots empêchent-ils la pression de s'équilibrer?
+    \item Si la pression s'équilibre, en combien de temps?
+\end{itemize}
+La question globale entourant les précédentes est surtout de savoir si \textbf{la pression partielle des gaz résiduels présents avant, pendant, et après le recuit peut potentiellement \frquotes{doper} la cavité à notre insu.}
+
+Pour cela, nous avons mis au point un dispositif ainsi qu'un protocole de mesure afin de mesurer la pression dans la cavité en simulant le dégazage de cette dernière par l'utilisation d'une vanne micro-fuite reliée à un \textit{capillaire}. La vanne étant préalablement calibrée, on peut en déduire le taux de fuite de la cavité lors du recuit correspondant à la montée en pression observée ci-dessus. Ces mesures alliées à des simulations effectuées avec Molflow permettront de comprendre les phénomènes au sein de la cavité.\\
+
+On s'intéressera à trois positions de capots:
+\begin{enumerate}
+    \item Cavité sans capots -- référence.
+    \item Capots placés à \SI{10}{\milli\meter} des brides -- positionnement actuel des capots pour les recuits des cavités \textit{spoke}.
+    \item Capots placés à environ \SI{1}{\milli\meter} des brides -- position des capots se rapprochant de celle de Fermilab\cite{grasselinoNinfusion}.
+\end{enumerate}
+
+Les caractéristiques des capots et leur position est détaillée dans la partie suivante.
+
+\chapter{Le dispositif expérimental}
+%placement des jauges du four, schéma du tube, photos, calibration de la vanne
+\section{Présentation du dispositif}
+Commençons par un bref rappel du matériel à disposition ainsi que de l'agencement des différentes parties du montage.\\
+La figure \ref{fig:schemaFour} ci-après montre l'agencement de la cavité avec ses capots dans le four sous vide TAV. Des photographies en figures \ref{fig:photoVanne} et \ref{fig:schemaFour} viennent compléter ce schéma.
+\begin{figure}
+    \centering
+    \includegraphics[trim = 3.7cm 4.3cm 3.2cm 0.9cm, clip, width=\textwidth]{Figures/schemaFour.pdf}%trim=left botm right top
+    \caption[Schéma du four TAV équipé.]{Schéma du four TAV équipé. La cavité (noir) est placé à sa position habituelle sur la grille du four. On rajoute un tube traversant les écrans thermiques qui rejoint une des brides faisceau de la cavité. Un capillaire (vert) circulant dans ce tube permet l'injection d'azote (\textit{Alphagaz~1}) directement dans la cavité grâce à une vanne micro-fuite. Les points de mesure de pression sont étiquetés en rouge: $P_\text{cav}$ correspond à la pression du tube, $P_\text{RGA}$ la pression totale donnée par le RGA, $P_\text{HV}$ et $P_\text{LV}$ les jauges processus du four situées au niveau de la clarinette.}
+    \label{fig:schemaFour}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[height=7cm]{Figures/IMG-20180410-WA0025.jpg}%trim=left botm right top
+    \caption[Photographie du capillaire tendu au dessus du flexible.]{Photographie du capillaire tendu au dessus du flexible lors du montage. Le capillaire s'arrête à une vingtaine de centimètres de la bride.}
+    \label{fig:photoCapilaire}
+\end{figure}
+On va simuler le dégazage de la cavité lors du recuit en injectant de l'azote \textit{Alphagaz~1} directement dans la cavité. Pour se faire, un tube est directement relié à la bride faisceau de la cavité, il se compose d'un tube (\SI{33}{\milli\meter} de diamètre) fixé sur la bride CF63 du four avec un joint élastomère, un presse-étoupe permet de raccorder un coude à ce tube. On passe alors sur une section de joints cuivres de \SI{40}{\milli\meter} de diamètre raccordé au moyen d'un flexible à la cavité (\textit{cf.} figure \ref{fig:photoIntFour}).\\
+Notons que tous les éléments d'ultra-vide on été préalablement nettoyés au bac ultrason. l'extérieur de la cavité utilisée -- \textit{Virginia}, spoke-\textsc{Myrrha} -- a été nettoyé en salle blanche et l'assemblage des jonctions 63-40 a été effectué dans le SAS matériel 1 (SM1).\\
+Une vanne micro-fuite (modèle Varian M.~9515100 \#202874\cite{varianValve}) calibrée pour l'occasion permet l'injection d'azote à faible flux directement dans la cavité (\textit{cf.} figure \ref{fig:photoVanne}).
+\begin{figure}
+    \centering
+    \includegraphics[width=.75\textwidth]{Figures/montage_four.pdf}\\
+    \includegraphics[width=.75\textwidth]{Figures/montage_vanne.pdf}%trim=left botm right top
+    \caption[Photographies de l'intérieur du four et de la vanne.]{En haut: photographie légendée de l'intérieur du four. Le capillaire est évidemment invisible -- En bas: agencement des jauges et de la vanne à l'extérieur, le tout connecté directement sur le tube par la bride CF63.}
+    \label{fig:photoIntFour}
+    \label{fig:photoVanne}
+\end{figure}
+
+\section{Étalonnage de la vanne micro-fuite}
+Antérieurement à la mesure sur le four, une calibration de la vanne a été effectuée. Celle-ci ne possédant pas d'affichage ou de graduation, il a été décidé de diviser l'écrou de rotation en quarts (grossièrement) l'erreur (maximisée) sur l'ouverture de la vanne est donc de $\pm\SI{1/8}{tour}$. On peut voir sur la figure \ref{fig:photoVanne} la marque des quatre quarts dessinés au marqueur noir. La flèche indique le point de référence.\\
+Un banc de test de la vanne a été monté pour l'occasion (\textit{cf.} figure \ref{fig:bancCalVanne}). Il s'agit de deux tubes de diamètre \SI{40}{\centi\meter} pour une longueur totale de \SI{2}{\meter} connectés directement à un banc de pompage sec turbomoléculaire Agilent. La vanne est directement fixée à l'adaptation capillaire d'où la nécessité du tube. Au niveau du groupe de pompage, on place une jauge et un manomètre afin de mesurer la pression dans le tube. Le volume total du montage mesuré en remplissant la tuyauterie d'eau (eau dé-ionisée de la salle blanche) et en pesant ensuite la masse totale de liquide nécessaire au remplissage donne un résultat de:
+\[V = \frac{\SI{3.8}{\kilo\gram}}{\SI{1}{\kilo\gram\per\liter}} = \SI{3.8}{\liter}\]
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/IMG_20180228_110459.jpg}
+    \caption{Photographie du montage dédié à la calibration de la micro-vanne.}
+    \label{fig:bancCalVanne}
+\end{figure}
+
+\subsection{Procédure d'étalonnage}
+Pour associer un taux de fuite à une ouverture spécifique de la vanne, on a procédé en effectuant des remontées en pression en vide statique. La procédure est la suivante:
+\begin{enumerate}
+    \item On établie une sur-pression d'azote \textit{Alphagaz~1} de \SI{100}{\milli\bar} en entrée de vanne.
+    \item À différentes ouvertures de la micro-vanne, on ferme la vanne de pompage puis on mesure la variation de pression dans le tube en fonction du temps.
+    \item On déduit ainsi le taux de fuite par la formule: $\displaystyle  Q\,[\si{\milli\bar.\liter\per\second}] = V\,[\si{\liter}]\times\frac{\Delta P\,[\si{\milli\bar}]}{\Delta t\,[\si{\second}]}$.
+\end{enumerate}
+
+\begin{figure}
+    \centering
+    \includegraphics[trim = 0mm  19mm 0mm 0mm, clip, width=\textwidth]{Figures/Figures15032018_feuille10_testNouvelleGraphique5.pdf}
+    \caption{Mesure du taux de fuite de la vanne en remontée de pression à \ce{N2}.}
+    \label{fig:graphCalVanne}
+\end{figure}
+
+Les résultats de cette manipulation sont montrées sur le graphique figure \ref{fig:graphCalVanne}. On constate que la vanne reste fermée jusqu'à une ouverture de \SI{9}{tour}. À partir de là, le taux de fuite augmente exponentiellement avec l'ouverture pour se stabiliser vers \SI{16}{tour}.
+
+Un ordre de grandeur du taux de fuite nécessaire pour correspondre à la pression dans le four lors du recuit peut être calculé comme suit:
+\begin{align*}
+    Q = \SI{1e-5}{\milli\bar}\times\SI{18000}{\liter\per\second} &= (pression~lors~du~recuit) \times (vitesse~de~pompage~cryo.)\\
+    &\simeq \SI{1.8e-1}{\milli\bar.\liter\per\second}
+\end{align*}
+
+\textbf{Les ouvertures de la vanne à considérer se situent donc dans ce régime fortement non linéaire de fonctionnement.}
+
+\section{Conductance du flexible}
+Notons que le fait qu'une des brides soit monopolisée par le flexible ce qui rend la situation non équivalente à un recuit \frquotes{classique} où les quatre brides sont couvertes par des capots en niobium. La jauge \textit{cavité} n'étant pas directement connectée à la cavité mais au tube/flexible, la conductance du tube est alors à prendre en compte. La conductance d'un tube flexible est très difficile à estimer au vu de leur texture annelée. En assimilant les tubes connectant la cavité à la jauge à un tube lisse de section droite, on peut calculer\cite{pfeiffer} pour l'air à \SI{20}{\celsius} une valeur de conductance:
+Pour la première partie du tube,
+\[C_\text{tombac + coude} = \num{12.1}\times\frac{4^3}{(50+10)} = \SI{13}{\liter\per\second}\]
+Pour le coude et le tube,
+\[C_\text{coude + tube} = \num{12.1}\times\frac{\num{3.3}^3}{(20+62)} =  \SI{5.3}{\liter\per\second}\]
+Et donc la conductance totale,
+\[C_\text{tot} = \frac{C_\text{coude + tube}\times C_\text{tombac + coude}}{C_\text{coude + tube} + C_\text{tombac + coude}} =  \SI{3.8}{\liter\per\second}\]
+%ajouter phrase
+Avec l'aide de Molflow, un code de simulation en régime moléculaire Monte-Carlo, on modélise le coude, tube et tombac reliant la cavité à la jauge(\textit{cf.} figure \ref{fig:simTube}). On sait que la conductance de cette tuyauterie est égale à:
+\[C_\text{tube + tombac + coude} = C_\text{orifice}\times(prob.~de~transmission)\]
+Ainsi, la conductance du tube sera égale à la conductance de l'orifice de diamètre \SI{40}{\centi\meter} que multiplie la probabilité de passage de la particule dans le flexible, coude et tube, la conductance d'un trou est donnée par:
+\[C_\text{orifice} = \num{11.6}\times A\,[\si{\centi\meter\squared}] = \num{11.6}\times(2^2\times\pi)=\SI{145.8}{\liter\per\second}\]
+
+\begin{figure}
+    \centering
+    \includegraphics[width = .75\textwidth]{Figures/tube.PNG}
+        \caption[Modèle du tube, tombac et coude reliant la cavité à la jauge.]{Modèle du tube, tombac et coude reliant la cavité à la jauge. Toutes les faces sont à température ambiante, les orifices \frquotes{cavité} et \frquotes{jauge} possèdent un facteur de collage de 1, les autres faces n'absorbent pas de particules. Seul la face \frquotes{cavité} désorbe (\SI{10}{\milli\bar.\liter\per\second}). Pour en déduire la probabilité de transmission, on effectue le ratio de particules \frquotes{pompées} au niveau de la jauge et de particules émises au niveau de la cavité. Les simulations sont réalisée avec de l'azote.}
+    \label{fig:simTube}
+\end{figure}
+
+Pour calculer la probabilité de transmission, on effectue le ratio de particules \frquotes{pompées} au niveau de la jauge et de particules émises au niveau de la cavité.\\
+On obtient avec Molflow: \num{2.24e5} particules absorbées par la face correspondant à la jauge pour \num{1.3e7} particules totales émise par la face correspondant à la cavité. Ainsi, la probabilité de transmission du tube, coude et flexible (assimilé à un tube droit) est de \SI{1.7}{\percent}. Ainsi la conductivité totale simulée est de:
+\[C_\text{tot} = \SI{2.5}{\liter\per\second}\]
+Ce qui est proche du calcul analytique. On peut être plus confiant en ce résultat prenant en compte la courbure du coude.
+
+La conductance intervient dans la relation reliant la pression réelle à l'intérieur de la cavité $P_\text{cav, réel}$ à la pression mesurée $P_\text{cav, mes}$ (nommée $P_\text{cav}$ précédemment dans le texte. On a:
+\begin{equation}
+    P_\text{cav, réel} = P_\text{cav, mes}+\frac{Q}{C_\text{tot}}\label{eq:corrPression}
+\end{equation}
+Avec $Q$ le flux moléculaire en \si{\milli\bar.\liter\per\second}, celui-ci peut être assimilé au flux injectée avec la micro-vanne dans la cavité, les autres composantes du flux sont la désorption des surfaces et l'évaporation de la vapeur d'eau, cependant, puisque le seul flux qui varie au cours de l'expérience est le flux injecté, on se permet de négliger ces autres composantes. Les composantes dues à la désorption de l'eau (espèce majoritaire dans le cas d'acier non recuit) sont de l'ordre de \SI{e-10}{\milli\bar.\liter\per\second\per\centi\meter\squared}\cite{lectureMercier,lectureGrabeski}, si l'on considère que la surface interne de la cavité est de \SI{2}{\meter\squared}, le flux du à la désorption de l'eau par la cavité est de \SI{2e-6}{\milli\bar.\liter\per\second} environ ce qui reste négligeable devant la quantité injectée par la micro-vanne.
+%puisqu'on injecte à hauteur de $Q = \SI{e-1}{\milli\bar.\liter\per\second}$, ces grandeurs de l'ordre de \SI{e-10}{\milli\bar.\liter\per\second\per\centi\meter\squared}\cite{lectureMercier}, ce qui correspond à \SI{0.661262}{\milli\bar.\liter\per\second} (surface estimée) sont négligeables. 
+Puisqu'on injecte un flux d'environ $Q = \SI{e-1}{\milli\bar.\liter\per\second}$ dans la cavité avec la micro-vanne, on peut alors en déduire grossièrement $P_\text{cav}$, la pression réelle dans la cavité en fonction de la pression mesurée par la jauge reliée au flexible:
+\[P_\text{cav, réel} \simeq P_\text{cav, mes} + \SI{4e-2}{\milli\bar}\]
+
+\chapter{Procédure -- Déroulement des mesures}
+On effectue les mesures aux différentes positions de capots la semaine du 3 au 6 avril 2018. L'expérience commence avec la cavité sans capots et se termine avec la position la plus proche de capots. Les photographies illustratives du montage sont montrées en figures \ref{fig:photoIntFour}, \ref{fig:photosCapots} et \ref{fig:cavEquipee}.\\
+Le jour de la mesure est désigné par la dénomination jour $J$. La pression dans la cavité (mesurée après le réseau de tubes) par la notation $P_\text{cav}$, les pressions du four données par les jauges primaires et secondaires $P_\text{LV}$ et $P_\text{HV}$ et la pression totale affichée par le RGA $P_\text{RGA}$. Les températures des deux étages de la pompe cryogéniques sont notifiées comme dans le PID.\\
+Le planning des mesures effectuée est le suivant:
+
+\begin{itemize}
+    \item[$J-1$:] Pompage.
+        \begin{itemize}
+            \item[\SI{16}{\hour}:] Allumage pompe Root, relevé des pressions des différentes jauges à intervalles réguliers (environ toutes les \SI{5}{\minute}, plus de points au début) pendant \SI{2}{\hour}.
+            \item[\SI{17}{\hour}:] Quand $P_\text{LV}\simeq\SI{e-4}{\milli\bar}$, ouverture vannes pompe cryogénique et RGA, relevé des pressions des différentes jauges à intervalles réguliers (toutes les \SI{10}{\minute}) pendant \SI{1}{\hour}.
+        \end{itemize}
+        
+    \item[$J$:] Mesures.
+        \begin{itemize}
+            \item[\SI{9}{\hour}\,30:] Mesure vide limite. Prise de pression de toutes les jauges et de la température de la pompe cryo.
+            \item[\SI{9}{\hour}\,35:] Mesure vide statique. Relevé des pressions des différentes jauges et température à intervalles réguliers pendant \SI{30}{\minute}.
+            %En parallèle, calcul taux de fuite (méthode avec la vitesse de la pompe, à recalibrer avec les mesures réelles entrain d'être effectuées pour déterminer la vitesse de pompage effective). 
+            \item[\SI{10}{\hour}:] Pompage jusqu'à environ \SI{e-6}{\milli\bar}.
+            \item[\SI{10}{\hour}\,05:] Mesure rapide des pressions et température cryo. à différentes ouvertures de la micro-vanne (entre 11 et \num{12.5} tours). \textbf{Attention, on doit rester sous les $P_\text{HV}=\SI{1e-4}{\milli\bar}$} (environ \SI{12.5}{tour}) pour éviter l'\textit{interlock} de protection du RGA. Faire attention à ce que la pression soit stabilisée.
+            \item[Heure à définir:] \sout{Si temps suffisant, même chose mais en fermant la vanne (14 à 10 tours).}
+            %\item[Heure à définir:] Ouverture fine de la micro-vanne de 11 à 13 tours (correspondance entre le dégazage cavité pendant les recuits \SIrange{e-6}{e-5}{\milli\bar}) avec à chaque fois prise de pression et température cryo.
+            \item[\SI{10}{\hour}\,45] Mesure vide statique vanne ouverte à \SI{11.75}{tour} pour re-déterminer le taux de fuite à cette ouverture.
+            \item[Début d'après-midi:] Remise \SI{.9}{\bar} \ce{Ar} puis PA air (procédure normale des recuits).
+            \item[Après-midi:] Montage de la position de capots suivante.
+            \item[Fin d'après-midi:] Pompage (cyclique retour premier point).
+        \end{itemize}
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \includegraphics[width = .5\textwidth-1mm]{Figures/IMG-20180410-WA0024.jpg}
+    \includegraphics[width = .5\textwidth-1mm]{Figures/IMG-20180410-WA0026.jpg}
+    \includegraphics[width = .5\textwidth-1mm]{Figures/IMG-20180410-WA0017.jpg}
+    \includegraphics[width = .5\textwidth-1mm]{Figures/IMG-20180410-WA0022.jpg}
+    \caption[Diverses photographies des capots et de leur placement sur les brides.]{Diverses photographies des capots et de leur placement sur les brides. Les capots sont maintenus au moyen de fils de niobium de \SI{1}{\milli\meter} de diamètre.}
+    \label{fig:photosCapots}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width = \textwidth]{Figures/IMG-20180410-WA0018.jpg}
+        \caption{Photographie de la cavité \textit{Amelia} équipée juste avant l'insertion dans le four.}
+    \label{fig:cavEquipee}
+\end{figure}
+
+\chapter{Compte-rendu des expériences}
+\section{Étude de la descente en pression à différentes positions de capots}
+Comme décrit dans le planning ci-dessus, la première partie consiste au suivi de la descente en pression lors du pompage des différentes parties du four, à savoir la cavité au moyen de la jauge \textit{full-range} fixée sur le tube et aux jauges du four et du RGA.
+\subsection{La pression dans la cavité}
+On s'attend à ce que la pression dans la cavité mette plus longtemps à descendre à mesure que les ports de la cavité soient obstrués par des capots, voir même que des molécules ne sortent jamais pour des ports cavités presque bouchés\\
+La jauge du tube couvrant toute la gamme de pressions (de la pression atmosphérique au régime moléculaire), on peut directement tracer l'évolution de la pression en fonction du temps de pompage dans la cavité. Les données brutes (sans correction due au tube) sont présentées en figure \ref{fig:pompage_pCav}.
+
+%\begin{figure}
+%    \centering
+%        \input{Figures/pompage_pCav.pgf}
+%        %\input{Figures/test.pgf}
+%   \caption{textwidth = \printinunitsof{in}\prntlen{\textwidth}}
+%    \label{test}
+%\end{figure}
+
+\begin{figure}
+    \centering
+    %\includegraphics[trim = 1.14mm 23mm 0mm 0mm, clip, width = \textwidth]{Figures/pompage_pCav.pdf}
+    \input{Figures/pompage_pCav.pgf}
+    \caption{Suivi de la pression lors du pompage du four pour les différentes positions de capot (respectivement sans, \SIlist{10.0(10);1.0(5)}{mm}). Données de la jauge $P_\text{cav}$ mesurant la pression au niveau du tube. L'incertitude sur les mesures de la pression est prise à \SI{40}{\percent} (données constructeur dans la gamme \SIrange{100}{e-8}{\milli\bar})\cite{manuelJaugeCav}. La pompe root se déclenche après \SI{2}{\minute} de pompage et la pompe cryogénique après environ une heure. La pression variant très fortement en début de pompage, l'erreur sur le relevé du temps est d'au moins \SI{5}{\second} pour les dix premiers points de mesure, puis de \SI{1}{\second} pour les autres.}
+    \label{fig:pompage_pCav}
+\end{figure}
+
+Notons que pour le régime de pompage, le flux $Q$ de la formule \ref{eq:corrPression} étant négatif du point de vue de la cavité (pompage et non injection de gaz), la pression réelle dans la cavité devrait-être plus faible que celle mesurée au début du tube. On peut estimer le flux dans le régime moléculaire, en prenant en compte le volume de la cavité et la pente de la courbe en figure \ref{fig:pompage_pCav} en régime moléculaire (troisième palier) caractérisant la dérivée de la pression en fonction du temps. Cependant cette correction n'est valide qu'en régime moléculaire.
+
+\textbf{On ne constate aucune différence dans la descente en pression pendant la phase de pompage de la cavité et ce quelque soit la position des capots.}\\
+Les capots n'entravent pas le pompage de la cavité, aucune molécule ne \frquotes{reste coincée} dans la cavité. Au moins jusqu'à \SI{e-6}{\milli\bar}, les pressions ne divergent pas.
+
+\subsection{La pression dans le four}
+On pourrait s'attendre à ce que la pression dans le four mette également plus de temps à descendre à mesure que la cavité est obstruée, la cavité agissant alors comme une micro-fuite, cependant, la puissance de pompage étant extrêmement importante et la position des jauges processus non optimale, il sera peut-être impossible de vérifier cet effet, si celui-ci existe.
+
+Traçons donc de manière similaire à la partie précédente la pression indiquée par les jauges processus du four (\textit{cf.} figure \ref{fig:pompage_pFour}). Les jauges processus sont au nombre de deux, la jauge primaire possède une erreur de \SI{15}{\percent} dans la gamme \SIrange{100}{e3}{\milli\bar}\cite{manuelJaugeLv}, quant-à la jauge secondaire, elle possède une erreur de \SI{30}{\percent} dans la gamme \SIrange{e-3}{e-8}{\milli\bar}\cite{manuelJaugeHv}.
+
+\begin{figure}
+    \centering
+    %\includegraphics[trim = 1.14mm 23mm 0mm 0mm, clip, width = \textwidth]{Figures/pompage_pFour.pdf}
+    \scalebox{1}{\input{Figures/pompage_pFour.pgf}}
+    \caption{Suivi de la pression dans le four lors du pompage du four pour les différentes positions de capot (respectivement sans, \SIlist{10.0(10);1.0(5)}{mm}). Données des jauges processus $P_\text{LV}$ et $P_\text{HV}$. La pompe root se déclenche après \SI{2}{\minute} de pompage et la pompe cryogénique après environ une heure. L'artefact de la courbe bleue ($P_\text{LV}$ avec capots à \SI{10}{\milli\meter}) vient du fait que les points de mesure à haute pression ont parfois été relevés sur le manomètre du four, bien moins précis. La pression variant très fortement en début de pompage, l'erreur sur le relevé du temps est d'au moins \SI{5}{\second} pour les dix premiers points de mesure, puis de \SI{1}{\second} pour les autres.}
+    \label{fig:pompage_pFour}
+\end{figure}
+
+Le pompage primaire ne montre aucune différence dans l'allure des courbes qui ne soit significative. \textbf{Il n'y a pas de changement significatif dans le taux de pompage du four}. Les décalages des courbes sont dus au fait que la pompe cryogénique n'a pas été déclenchée à l'exact même moment. On remarque cependant que le vide limite atteint est légèrement différent et finalement meilleur avec les capots complètement collés. Cette expérience ayant été réalisée en dernier, le four a alors subit trois dégazages préalables et cette différence n'est donc pas significative, il est normal que le vide limite atteint s'améliore au court du temps. On constate aussi que le pompage cryogénique -- caractérisé par une augmentation rapide du taux de pompage après environ une heure de pompage -- a débuté plus tôt pour cette série. Le temps total de pompage effectif est donc plus long.
+
+\section{Étude en vide statique à différentes positions de capots}
+\label{section:videStatique}
+Étudions à présent l'influence de la position des capots sur le taux de dégazage/fuite global du four. Pour ce faire, les vannes sont fermées via les commandes manuelles après la phase de pompage nocturne. En fermant la vanne estampillée \frquotes{Vanne primaire}, une sécurité du four le place en vide statique en fermant également la vanne cryogénique. On peut alors mesurer la remontée en pression grâce aux différentes jauges présentes sur l'enceinte ($P_\text{cav}$, $P_\text{HV}$ et $P_\text{RGA}$) et ainsi en déduire le taux de fuite du four puisqu'on connaît le volume de l'enceinte (\SI[separate-uncertainty = true, multi-part-units=single]{4500(20)}{\liter}).
+
+On trace alors ci-après (figures \ref{fig:videStatique_sansCapots}, \ref{fig:videStatique_10mm} et \ref{fig:videStatique_1mm}) l'évolution de la pression indiquée par les différentes jauges en fonction du temps. Une interpolation linéaire permet de déterminer le coefficient de dégazage qui peut-être traduit en taux de dégazage en multipliant cette valeur par le volume du four\footnote{Les matrices de covariance des différents paramètres de \textit{fit} sont disponibles en annexe \ref{chapter:MatricesDeCovariance}.} On s'affranchira du premier point de mesure ($t=\SI{0}{\minute}$) pour cette opération car il fausserait le calcul des coefficients du \textit{fit} linéaire. En effet, on observe sur l'analyseur de gaz résiduelle une libération d'argon dans l'enceinte du four lors de la man\oe{}uvre des vannes du four. On laisse ainsi augmenter la pression dans le four pendant environ 
+
+%mettre les courbes, prendre en compte l'incertitude sur le volume du four pour le calcul du taux de fuite global. Tableau de données des taux de fuite.
+\begin{figure}
+    \centering
+    \input{Figures/videStatique_sansCapots_fit.pgf}
+    \caption{Suivi de la pression indiquée par les différentes jauges en vide statique (fermeture des vannes à $t=\SI{0}{\minute}$) \textbf{sans capots}. Les courbes estampillées \texttt{lin(1:7)} indiquent une régression linéaire sur les points 1 à 7 de la courbe (le premier point à $t=0$ est d'indice 0 dans cette convention). Les coefficients directeurs des courbes rouge, bleue et noire sont respectivement: \SIlist{6.216(97)e-07; 6.78(13)e-07; 2.558(78)e-06}{\milli\bar\per\minute}.}
+    \label{fig:videStatique_sansCapots}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \input{Figures/videStatique_10mm_fit.pgf}
+    \caption{Suivi de la pression indiquée par les différentes jauges en vide statique (fermeture des vannes à $t=\SI{0}{\minute}$) lorsque les capots sont placés à \textbf{\SI{10}{\milli\meter}} des brides. Les courbes estampillées \texttt{lin(1:9)} indiquent une régression linéaire sur les points 1 à 9 de la courbe (le premier point à $t=0$ est d'indice 0 dans cette convention). Les coefficients directeurs des courbes rouge, bleue et noire sont respectivement: \SIlist{3.530(31)e-07; 3.555(55)e-07; 1.688(35)e-06}{\milli\bar\per\minute}.}
+    \label{fig:videStatique_10mm}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \input{Figures/videStatique_1mm_fit.pgf}
+    \caption{Suivi de la pression indiquée par les différentes jauges en vide statique (fermeture des vannes à $t=\SI{0}{\minute}$) lorsque les capots sont placés à \textbf{\SI{1}{\milli\meter}} des brides. Les courbes estampillées \texttt{lin(1:6)} indiquent une régression linéaire sur les points 1 à 6 de la courbe (le premier point à $t=0$ est d'indice 0 dans cette convention). Les coefficients directeurs des courbes rouge, bleue et noire sont respectivement: \SIlist{3.80(14)e-07; 3.94(10)e-07; 1.770(87)e-06}{\milli\bar\per\minute}.}
+    \label{fig:videStatique_1mm}
+\end{figure}
+
+À partir de ces données, on calcul les taux de dégazage correspondant tels que:
+\begin{align*}
+    Q[\si{\milli\bar.\liter\per\second}] &= a[\si{\milli\bar\per\minute}]\times V[\si{\liter}] / 60\\
+    \delta Q^2 &= \abs{\frac{\partial Q}{\partial a}}\times \delta a + \abs{\frac{\partial Q}{\partial V}}\times \delta V = (V\cdot\delta a + a\cdot\delta V)/60
+\end{align*}
+avec $Q$ le taux de fuite/dégazage global, $a$ le coefficient directeur des droites précédemment tracées et $V$ le volume du four.
+
+On peut alors récapituler les données dans un tableau:
+\begin{center}
+\begin{tabular}{|l|r|r|r||r|}
+\hline
+\multicolumn{1}{|l|}{Config.} & \multicolumn{1}{l|}{$Q_{cav}$ (\si{\milli\bar.\liter\per\second})} & \multicolumn{1}{l|}{$Q_{HV}$ (\si{\milli\bar.\liter\per\second})} & \multicolumn{1}{l||}{$Q_{RGA}$  (\si{\milli\bar.\liter\per\second})} & \multicolumn{1}{l|}{\textbf{$Q_{moyen}$  (\si{\milli\bar.\liter\per\second})}}\\
+\hline
+Sans capots & \num{+4.662(76)e-05} & \num{+5.09(10)e-05} & \sout{\num{+1.918(59)e-4}} & \num{+4.876(63)e-05}\\
+\SI{10}{\milli\meter} & \num{+2.648(26)e-05} & \num{+2.666(43)e-05} & \sout{\num{+1.266(27)e-4}} & \num{+2.657(25)e-05}\\
+\SI{1}{\milli\meter} & \num{+2.85(11)e-05} & \num{+2.955(77)e-05} & \sout{\num{+1.328(65)e-4}} & \num{+2.902(39)e-05}\\
+\hline
+\end{tabular}
+\end{center}
+Où les $Q_{i}$ sont respectivement les taux calculés à partir des jauges cavité, vide secondaire et RGA. On constate qu'à chaque fois, la valeur de $Q$ calculée à partir de la donnée de la jauge RGA est très différente de celle fournie par les autres jauges (serait-ce du à une mauvaise calibration du RGA?), ce qui est d'autant plus flagrant sur les courbes de suivi de la pression et le calcul des différentes pentes. Ainsi, on s'affranchi de cette valeur pour le calcul de la moyenne $Q_\text{moyen}$ donnant un aperçu global du taux de fuite/dégazage dans le four.\\
+La figure \ref{fig:pdfStatique} montre une représentation visuelle de ces trois différentes valeurs représentées par des distributions normales (maximisation de l'entropie de Shannon, théorème de Maxent).
+\pgfmathdeclarefunction{norm}{3}{%norm(mu,sigma)
+    \pgfmathparse{1/((#2)*sqrt(2*pi))*exp(-((x-(#1))^2)/(2*(#2)^2))}
+}
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            axis lines = left,
+            xlabel = $Q_\text{moyen}$ (\si{\milli\bar.\liter\per\second}),
+            minor x tick num = 4,
+            ylabel = Densité de probabilité,
+            /pgf/number format/.cd,%3 lignes dessous, utiliser spacers français au lieu d'anglais.
+            use comma,
+            1000 sep={}
+            ]
+            
+            \addplot[
+            domain=4.5e-5:5.2e-5,
+            samples=100,
+            color=red
+            ]
+            {1/(6.3e-07*sqrt(2*pi)) * exp(-((x - 4.876e-05)^2)/(2*(6.3e-07)^2))};
+            
+            \addplot[
+            domain=2.5e-5:2.8e-5,
+            samples=100,
+            color=blue
+            ]
+            {1/(2.5e-07*sqrt(2*pi)) * exp(-((x - 2.657e-05)^2)/(2*(2.5e-07)^2))};
+            
+            \addplot[
+            domain=2.5e-5:3.2e-5,
+            samples=100,
+            color=black
+            ]
+            {1/(3.9e-07*sqrt(2*pi)) * exp(-((x - 2.902e-05)^2)/(2*(3.9e-07)^2))};
+            
+            \legend{sans capots,\SI{10}{\milli\meter},\SI{1}{\milli\meter}}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Représentation des trois valeurs numériques du taux de dégazage dans les trois configurations de capots.}
+    \label{fig:pdfStatique}
+\end{figure}
+
+La présence de capots influence donc le taux de dégazage \textbf{global} en réduisant l'émission de particules depuis la cavité. Curieusement, la configuration dans laquelle les capots sont les plus proches de la bride possède un taux de dégazage global plus important que dans le cas où les capots sont plus espacés. Les conditions initiales sont cependant différentes d'une expérience à l'autre, même si les précautions ont été prises afin d'avoir les mêmes conditions pendant ces trois journées d'expérience. Ce point est ouvert à la discussion.\\
+À titre de comparaison, le taux de dégazage/fuite global du four mesuré lors d'une précédente expérience (le 1\ier{} mars 2018\footnote{Expérience effectuée le 27/02/2018, analyse le 01/03/2018. Mesure de la pression avec la jauge secondaire processus, postérieurement à un étuvage sous vide à \SI{220}{\celsius} pendant \SI{10}{\hour}.}) était de \SI{3.41(54)e-06}{\milli\bar.\liter\per\second}. Cette valeur étant faible par rapport aux taux de fuite mesurés lors de la présente expérience, on voit très clairement que l'ajout de la cavité non dégazée constitue la principale source de dégazage. Notons que le tank hélium n'est pas bouché lors des recuits.
+
+\chapter{Simulation d'un taux de dégazage de la cavité par injection d'azote}
+Attaquons à présent le but premier de cette expérience: Caractériser le gradient de pression entre la cavité et l'enceinte du four en fonction de la position des capots. Comme détaillé précédemment, on injecte avec la micro-vanne de l'azote au plus proche de la cavité au moyen d'un capillaire. La sur-pression d'azote en entrée de la micro-vanne est de \SI{+100}{\milli\bar}. On va ouvrir la vanne à différents crans et mesurer la pression indiquée par les jauges \texttt{cavité}, \texttt{HV} et \texttt{RGA}, tout en maintenant un pompage cryogénique de l'enceinte. On fait attention à ne pas dépasser les \SI{e-4}{\milli\bar} pour éviter la fermeture du RGA. Cette expérience nous renseignera sur la pression régnant à l'intérieur de la cavité lors des recuits, et permettra d'établir une équivalence $P_\text{cav} \longleftrightarrow P_\text{HV}$ lors des recuits où la pression indiquée par le four atteint les quelques \SI{e5}{\milli\bar}.\\
+On trace alors pour les différentes configurations la pression indiquée par ces différentes jauges dans les figures \ref{fig:ouvertureVanne_sansCapots}, \ref{fig:ouvertureVanne_10mm} et \ref{fig:ouvertureVanne_1mm}.
+
+\begin{figure}
+    \centering
+    \input{Figures/ouvertureVanne_sansCapots.pgf}
+    \caption{Suivi de la pression indiquée par les différentes jauges pour différentes ouvertures de la micro-vanne. Capots à \SI{10}{\milli\meter} des brides. L'échelle du haut donne la correspondance en taux de fuite mesuré à partir de la calibration.}
+    \label{fig:ouvertureVanne_sansCapots}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \input{Figures/ouvertureVanne_10mm.pgf}
+    \caption{Suivi de la pression indiquée par les différentes jauges pour différentes ouvertures de la micro-vanne. Cavité sans capots. L'échelle du haut donne la correspondance en taux de fuite mesuré à partir de la calibration.}
+    \label{fig:ouvertureVanne_10mm}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \input{Figures/ouvertureVanne_1mm.pgf}
+    \caption{Suivi de la pression indiquée par les différentes jauges pour différentes ouvertures de la micro-vanne. Capots à \SI{1}{\milli\meter} des brides. L'échelle du haut donne la correspondance en taux de fuite mesuré à partir de la calibration.}
+    \label{fig:ouvertureVanne_1mm}
+\end{figure}
+
+On se rend alors compte de l'énorme gradient de pression lors de la phase de dégazage de la cavité pendant les recuits. Une pression mesurée de \SI{e-5}{\milli\bar} par la jauge processus ($P_\text{HV}$) du four équivaut à \SI{5e-3}{\milli\bar} quand la cavité n'est pas équipée de capots, à \SI{1e-2}{\milli\bar} quand ils sont à \SI{10}{\milli\meter} et \SI{2e-2}{\milli\bar} quand les capots sont au plus prêt de la bride.
+
+Cependant, malgré cette impressionnante différence, dès lors qu'on arrête l'injection d'azote dans la cavité, \textbf{la pression s'équilibre très rapidement en une trentaine de minutes} entre les deux jauges du four. Malheureusement, le suivi du pompage après l'injection n'a pas bénéficié d'une acquisition temporelle, il s'agit d'une observation à deux points de mesure.
+
+\chapter{Mesure en vide statique avec la micro-vanne ouverte}
+
+\chapter{Conclusion -- Perspectives}
+Malgré la réduction drastique de la conductance en présence de capots, force est de constater que la pression se stabilise très rapidement (moins de \SI{30}{\minute}) entre la cavité et l'enceinte du four bien que la différence entre ces deux parties pendant le recuit soit de plusieurs décades.
+%Étude à compléter par des simulations.
