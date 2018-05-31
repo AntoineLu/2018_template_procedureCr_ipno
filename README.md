@@ -47,7 +47,7 @@ N'hesitez pas à placer les figures et fichiers annexes (code par exemple) dans 
 \includegraphics[scale = <0 à 1>, width = <##cm>, height = <##cm>]{Dossier/nomDuGraphique.extension}
 ```
 ### glossaire.tex
-Permet la création d'un glossaire.
+Permet la création d'un glossaire. Consultez l'aide du package glossaries.
 
 ## Recommandations, conseils et instructions
 ### Conseils d'ordre général
