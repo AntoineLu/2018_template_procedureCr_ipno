@@ -27,7 +27,7 @@ est la page de garde.
 #### unsrt-fr.bst
 est le fichier de configuration pour une bibliographie s'affichant en français.
     
-### Autres fichier du projet
+### Fichiers à modifier
 Les seuls fichiers qui nécessitent une modification sont normalement ceux listés à la racine. Chacun contiennent des instructions en en-tête en commentaire LaTeX (```%```). Voici une liste avec description succincte.
 #### configuration.tex
 Fichier de configuration du document où on indique l'auteur, le titre...
@@ -46,6 +46,8 @@ N'hesitez pas à placer les figures et fichiers annexes (code par exemple) dans 
 ```{tex}
 \includegraphics[scale = <0 à 1>, width = <##cm>, height = <##cm>]{Dossier/nomDuGraphique.extension}
 ```
+### glossaire.tex
+Permet la création d'un glossaire.
 
 ## Recommandations, conseils et instructions
 ### Conseils d'ordre général
