@@ -1,5 +1,5 @@
 # 2018_template_procedureCr_ipno
-Version 1, portage LaTeX par Antoine Luboz (luboz@ipno.in2p3.fr)
+Version 1, portage LaTeX par Antoine Luboz (luboz@ipno.in2p3.fr).\\
 Mise en page inspirée des documents PV et procédure d'Attrium.
 ## Présentation
 Template LaTeX pour les comptes rendus, procédures et procès-verbaux.
