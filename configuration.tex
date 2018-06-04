@@ -1,6 +1,7 @@
 % CONFIGURATION DU DOCUMENT
 % On complétera ici les méta-données, titre et auteurs ainsi que les autres configurations de la page ainsi que les fichiers à inclure
 
+\ProvidesPackage{configuration}% Définition de cette page comme un package.
 % Liste des fichiers à inclure (par défaut tous, commenter pour ne pas inclure)
 \includeonly{
     Files/bibliographie,% inclure la bibliographie?
@@ -8,17 +9,18 @@
 }
 
 % Écrire ici le titre, l'auteur et la date de publication... Écrire N.A. si non applicable.
-\newcommand{\type}{proc\`{e}s-verbal}% type de document procès-verbal, procédure, rapport technique...
-\newcommand{\titre}{Mesure du taux de fuite \`{a} diff\'{e}rentes positions de capots}
-\newcommand{\redacteur}{Antoine Luboz}% Nom
-\newcommand{\mailRedacteur}{luboz@ipno.in2p3.fr}% email
-\newcommand{\verificateur}{David Longuevergne}% Nom
-\newcommand{\mailVerificateur}{longuevergn@ipno.in2p3.fr}% email
-\newcommand{\AQ}{N.A.}
-\newcommand{\mailAQ}{N.A.}% email
-\newcommand{\diffusion}{interne}% interne ou externe.
-\newcommand{\datee}{\today}
-\newcommand{\version}{1}% numéro de version.
-\newcommand{\atrium}{N.A.}
-\newcommand{\vv}{N.A.}
-\newcommand{\reference}{N.A.}
+\newcommand*{\type}{proc\`{e}s-verbal}% type de document procès-verbal, procédure, rapport technique...
+\newcommand*{\titre}{Mesure du taux de fuite \`{a} diff\'{e}rentes positions de capots}
+\newcommand*{\redacteur}{Antoine Luboz}% Nom
+\newcommand*{\mailRedacteur}{luboz@ipno.in2p3.fr}% email
+\newcommand*{\verificateur}{David Longuevergne}% Nom
+\newcommand*{\mailVerificateur}{longuevergn@ipno.in2p3.fr}% email
+\newcommand*{\AQ}{N.A.}
+\newcommand*{\mailAQ}{N.A.}% email
+\newcommand*{\diffusion}{interne}% interne ou externe.
+\newcommand*{\datee}{\today}
+\newcommand*{\version}{1}% numéro de version.
+\newcommand*{\atrium}{N.A.}
+\newcommand*{\vv}{N.A.}
+\newcommand*{\reference}{N.A.}
+\endinput
