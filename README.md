@@ -9,26 +9,10 @@ De plus, LaTeX dispose d'une communauté très active et la plupart des problèm
 Voici ci après quelques recommandations pour que la compilation du document se passe au mieux.
 
 ## Structure du projet
-### Fichier projet LaTeX, dossier Files
-Les fichiers nécessaires à la bonne compilation du projet sont situés dans le dossier files. Il est normalement pas nécessaire d'y toucher mais à titre informatif ou au vu de futures modifications. Chacun est libre de modifier la structure du projet, merci de maintenir le changelog à jour ainsi que le readme explicatif. Voici le détail du dossier:
-#### Logos
-les logos des instituts sont placés dans le dossier Logos - Merci de me contacter si vous trouvez un logo vectoriel de l'IPNO (format eps, svg, pdf).
-#### changelog
-répertorie les changements apportés à la structure des fichiers du projet. Tout changement est à signaler dans le fichier changelog.
-#### commandes.tex
-répertorie les commandes utilisables (guillemets français, nombres romains...) Dans la suite du document.
-#### main.tex
-est le fichier compilé, les autres fichiers tex sont inclus dans celui-ci.
-#### packages.tex
-contient la liste d'appels de packages et leurs options. C'est ici qu'on peut également modifier les options du langage informatique (citation de code avec lstlistings), l'affichage des nombres et unités (siunitx) ou la langue du texte.
-#### titlepage.tex
-est la page de garde.
-#### unsrt-fr.bst
-est le fichier de configuration pour une bibliographie s'affichant en français.
     
 ### Fichiers à modifier
 Les seuls fichiers qui nécessitent une modification sont normalement ceux listés à la racine. Chacun contiennent des instructions en en-tête en commentaire LaTeX (```%```). Voici une liste avec description succincte.
-#### configuration.tex
+#### configuration.sty
 Fichier de configuration du document où on indique l'auteur, le titre...
 #### histModifications.tex
 Tableau dans lequel on indique l'historique des modifications de la lignée de fichier, rajoutez une ligne par nouveau fichier diffusé.
@@ -47,6 +31,23 @@ N'hesitez pas à placer les figures et fichiers annexes (code par exemple) dans 
 ```
 ##### glossaire.tex
 Permet la création d'un glossaire. Consultez l'aide du package glossaries. (ne marche pour le moment pas)
+
+### Fichier projet LaTeX, dossier Files
+Les fichiers nécessaires à la bonne compilation du projet sont situés dans le dossier files. Il est normalement pas nécessaire d'y toucher mais à titre informatif ou au vu de futures modifications. Chacun est libre de modifier la structure du projet, merci de maintenir le changelog à jour ainsi que le readme explicatif. Voici le détail du dossier:
+#### Logos
+les logos des instituts sont placés dans le dossier Logos - Merci de me contacter si vous trouvez un logo vectoriel de l'IPNO (format eps, svg, pdf).
+#### changelog
+répertorie les changements apportés à la structure des fichiers du projet. Tout changement est à signaler dans le fichier changelog.
+#### commandes.tex
+répertorie les commandes utilisables (guillemets français, nombres romains...) Dans la suite du document.
+#### main.tex
+est le fichier compilé, les autres fichiers tex sont inclus dans celui-ci.
+#### packages.tex
+contient la liste d'appels de packages et leurs options. C'est ici qu'on peut également modifier les options du langage informatique (citation de code avec lstlistings), l'affichage des nombres et unités (siunitx) ou la langue du texte.
+#### titlepage.tex
+est la page de garde.
+#### unsrt-fr.bst
+est le fichier de configuration pour une bibliographie s'affichant en français.
 
 ## Recommandations, conseils et instructions
 ### Conseils d'ordre général
