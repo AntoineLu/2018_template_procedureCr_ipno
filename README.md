@@ -21,13 +21,13 @@ Résumé du fichier que l'on crée qui s'affichera sur la page de garde, restez 
 #### bibliographie.bib
 Fichier répertoriant les références bibliographiques au format BibTeX.
 #### contenu.tex
-Le contenu à proprement parler du document, on utilise les balises `\chapter{}`, `\section{}` et autres commandes LaTeX.
+Le contenu à proprement parler du document, on utilise les balises `\chapter{<titre du chapitre>}`, `\section{<titre de la section>}` et autres commandes LaTeX.
 ##### annexes.tex
 Contient les annexes, écrivez en utilisant la même structure que pour le corps. La numérotation sera effectuée automatiquement et différemment des sections précédent l'annexe.
 ##### Dossier figures ou fichiersAnnexes
 N'hesitez pas à placer les figures et fichiers annexes (code par exemple) dans un dossier à la racine. Les figures seront alors appelées par
 ```{tex}
-\includegraphics[scale = <0 à 1>, width = <##cm>, height = <##cm>]{Dossier/nomDuGraphique.extension}
+\includegraphics[scale = <0 à 1>, width = <##cm>, height = <##cm>]{<Dossier/nomDuGraphique.extension>}
 ```
 ##### glossaire.tex
 Permet la création d'un glossaire. Consultez l'aide du package glossaries. (ne marche pour le moment pas)
@@ -53,7 +53,7 @@ est le fichier de configuration pour une bibliographie s'affichant en français.
 ### Conseils d'ordre général
 Compiler sur le fichier ```files/main.tex```
 
-Utilisez `\frquotes{}` pour les guillemets français
+Utilisez `\frquotes{<texte entre guillemets>}` pour les guillemets français
 S'il y a un problème d'accentuation, remplacez les lettres accentuées comme suit: `é` devient ```\'{e}```, `à` devient ```\`{a}```, `Ë` devient ```\"{E}```...
 
 Utilisez la recherche et remplacement CTRL + F, _cf._ documentation pour d'autres types d'accents.
@@ -63,7 +63,7 @@ La commande `\emph{<texte>}` permet de mettre en valeur un élément de texte en
 \xout{Texte à hachurer}, et `\uwave{<texte à souligner par une vaguelette>}`  (`\text{<texte droit en mode math>}`).
 
 ### Bibliographie
-La plupart des références bibliographiques peuvent-être trouvées sur Google Scholar, Mendeley... en choisissant d'exporter en BIB.
- Une référence se présente sous cette forme:
-        ```@type{tag, title = {titre}, author = {auteur}, year = {année}, month = mois {jan,feb...}, <d'autres paramètres spécifiques aux différents types>}```
-        Une référence est citée en utilisant la commande ```\cite{tag}```, les références peuvent-être combinées ```\cite{tag1,tag2}```.
+La plupart des références bibliographiques peuvent-être trouvées sur Google Scholar, Mendeley... en choisissant d'exporter en BIB.  
+Une référence se présente sous cette forme:
+- ```@type{<tag>, title = {<titre>}, author = {<auteur>}, year = <année>, month = <mois, érire directement jan,feb...>, <d'autres paramètres spécifiques aux différents types>}```. Cette entrée sera écrite dans le fichier `bibliographie.bib`.
+- Une référence du fichier est citée en utilisant la commande `\cite{<tag>}` dans le texte. Les références peuvent-être combinées `\cite{<tag1>,<tag2>}`.
