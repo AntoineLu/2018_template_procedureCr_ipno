@@ -11,7 +11,7 @@ Voici ci après quelques recommandations pour que la compilation du document se 
 ## Structure du projet
     
 ### Fichiers à modifier
-Les seuls fichiers qui nécessitent une modification sont normalement ceux listés à la racine. Chacun contiennent des instructions en en-tête en commentaire LaTeX (```%```). Voici une liste avec description succincte.
+Les seuls fichiers qui nécessitent une modification sont normalement ceux listés à la racine. Chacun contiennent des instructions en en-tête en commentaire LaTeX (`%`). Voici une liste avec description succincte.
 #### configuration.sty
 Fichier de configuration du document où on indique l'auteur, le titre...
 #### histModifications.tex
@@ -21,7 +21,7 @@ Résumé du fichier que l'on crée qui s'affichera sur la page de garde, restez 
 #### bibliographie.bib
 Fichier répertoriant les références bibliographiques au format BibTeX.
 #### contenu.tex
-Le contenu à proprement parler du document, on utilise les balises ```\chapter{}```, ```\section{}``` et autres commandes LaTeX.
+Le contenu à proprement parler du document, on utilise les balises `\chapter{}`, `\section{}` et autres commandes LaTeX.
 ##### annexes.tex
 Contient les annexes, écrivez en utilisant la même structure que pour le corps. La numérotation sera effectuée automatiquement et différemment des sections précédent l'annexe.
 ##### Dossier figures ou fichiersAnnexes
@@ -54,12 +54,16 @@ est le fichier de configuration pour une bibliographie s'affichant en français.
 Compiler sur le fichier ```files/main.tex```
 
 Utilisez `\frquotes{}` pour les guillemets français
-Dans la page de configuration, remplacez les accents comme suit:
+S'il y a un problème d'accentuation, remplacez les lettres accentuées comme suit:
         é devient ```\'{e}```
         à devient ```\`{a}```
         Ë devient ```\"{E}```
 
 Utilisez la recherche et remplacement CTRL + F, _cf._ documentation pour d'autres types d'accents.
+
+### Propriété de l'emphase
+La commande `\emph{<texte>}` permet de mettre en valeur un élément de texte en s'adaptant à l'environnement (paragraphe) dans lequel le texte se situe. Par exemple, si le paragraphe est droit, la commande mettra le texte séléctionné en italique. Si le paragraphe est italique, alors la commande tournera la selection en texte droit. Si le paragraphe est gras, alors le texte selectionné sera droit et clair et ainsi de suite. Il est possible de changer le formattage par défaut (voir sur Internet) ou de forcer un format particulier avec les commandes suivantes: `\textbf{<texte à afficher en gras>}`, `\textit{<texte à afficher en italique>}`, `\texttt{<texte à afficher en largeur fixe « machine à écrire »>}`, `\uline{<texte à souligner>}`, `\sout{<texte à barrer>}`
+\xout{Texte à hachurer}, et `\uwave{<texte à souligner par une vaguelette>}`  (`\text{<texte droit en mode math>}`).
 
 ### Bibliographie
 La plupart des références bibliographiques peuvent-être trouvées sur Google Scholar, Mendeley... en choisissant d'exporter en BIB.
