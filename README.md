@@ -54,10 +54,7 @@ est le fichier de configuration pour une bibliographie s'affichant en français.
 Compiler sur le fichier ```files/main.tex```
 
 Utilisez `\frquotes{}` pour les guillemets français
-S'il y a un problème d'accentuation, remplacez les lettres accentuées comme suit:
-        é devient ```\'{e}```
-        à devient ```\`{a}```
-        Ë devient ```\"{E}```
+S'il y a un problème d'accentuation, remplacez les lettres accentuées comme suit: `é` devient ```\'{e}```, `à` devient ```\`{a}```, `Ë` devient ```\"{E}```...
 
 Utilisez la recherche et remplacement CTRL + F, _cf._ documentation pour d'autres types d'accents.
 
