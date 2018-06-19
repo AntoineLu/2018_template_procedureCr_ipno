@@ -1,5 +1,5 @@
 % NOUVELLES COMMANDES
-% Définition de nouvelles commandes
+% Définition de nouvelles commandes et environnements
 
 % Guillemets
 \newcommand{\frquotes}[1]{\og {#1} \fg}
@@ -13,3 +13,13 @@
 % Norme et valeur absolue
 \newcommand{\abs}[1]{\ensuremath\left\vert {#1} \right\vert}
 \newcommand{\norme}[1]{\ensuremath\left\| {#1} \right\|}
+
+% Commentaire
+\newenvironment{commentaire}[1]
+{
+\newcommand{\footArg}{#1}
+\paragraph{\faCommentsO}
+}
+{
+~(\footArg)
+}
