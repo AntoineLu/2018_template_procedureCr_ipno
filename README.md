@@ -16,7 +16,7 @@ De plus, LaTeX dispose d'une communauté très active et la plupart des problèm
 Compiler sur le fichier ```files/main.tex``` avec pdflatex.  
 S'il y a un problème d'accentuation, remplacez les lettres accentuées comme suit: `é` devient ```\'{e}```, `à` devient ```\`{a}```, `Ë` devient ```\"{E}```...  
 Utilisez la recherche et remplacement CTRL + F, _cf._ documentation pour d'autres types d'accents.  
-Voir la [section suivante](###commandes-supplementaires)
+Voir la [section suivante](#commandes-supplémentaires) pour les commandes supplémentaires ajoutée.
 
 ### Propriété de l'emphase
 La commande `\emph{<texte>}` permet de mettre en valeur un élément de texte en s'adaptant à l'environnement (paragraphe) dans lequel le texte se situe. Par exemple, si le paragraphe est droit, la commande mettra le texte séléctionné en italique. Si le paragraphe est italique, alors la commande tournera la selection en texte droit. Si le paragraphe est gras, alors le texte selectionné sera droit et clair et ainsi de suite. Il est possible de changer le formattage par défaut (voir sur Internet) ou de forcer un format particulier avec les commandes suivantes: `\textbf{<texte à afficher en gras>}`, `\textit{<texte à afficher en italique>}`, `\texttt{<texte à afficher en largeur fixe « machine à écrire »>}`, `\uline{<texte à souligner>}`, `\sout{<texte à barrer>}`
