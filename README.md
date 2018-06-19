@@ -12,12 +12,9 @@ On conseillera l'utilisation du service en ligne [ShareLaTeX](https://www.sharel
 De très bon cours sur les bases du LaTeX sont disponible [sur Open Classrooms](https://openclassrooms.com/courses/redigez-des-documents-de-qualite-avec-latex) ou directement [sur ShareLaTeX](https://fr.sharelatex.com/learn/).
 De plus, LaTeX dispose d'une communauté très active et la plupart des problèmes ou questions trouve une réponse très rapide avec une simple recherche Google!
 
-### Conseils d'ordre général
-Compiler sur le fichier ```files/main.tex```
-
-Utilisez `\frquotes{<texte entre guillemets>}` pour les guillemets français
-S'il y a un problème d'accentuation, remplacez les lettres accentuées comme suit: `é` devient ```\'{e}```, `à` devient ```\`{a}```, `Ë` devient ```\"{E}```...
-
+### Conseils d'ordre général, résumé succin du fonctionnement de LaTeX
+Compiler sur le fichier ```files/main.tex``` avec pdflatex.  
+S'il y a un problème d'accentuation, remplacez les lettres accentuées comme suit: `é` devient ```\'{e}```, `à` devient ```\`{a}```, `Ë` devient ```\"{E}```...  
 Utilisez la recherche et remplacement CTRL + F, _cf._ documentation pour d'autres types d'accents.
 
 ### Propriété de l'emphase
@@ -29,6 +26,10 @@ La plupart des références bibliographiques peuvent-être trouvées sur Google 
 Une référence se présente sous cette forme:
 - ```@type{<tag>, title = {<titre>}, author = {<auteur>}, year = <année>, month = <mois, érire directement jan,feb...>, <d'autres paramètres spécifiques aux différents types>}```. Cette entrée sera écrite dans le fichier `bibliographie.bib`.
 - Une référence du fichier est citée en utilisant la commande `\cite{<tag>}` dans le texte. Les références peuvent-être combinées `\cite{<tag1>,<tag2>}`.
+
+### Commandes supplémentaires
+Voici la liste des quelques commandes supplémentaires au LaTeX « de base » et leur description :
+- `\frquotes{<texte entre guillemets>}` permet d'afficher des guillemets français.
 
 ## Structure du projet
 ### Fichiers à modifier
