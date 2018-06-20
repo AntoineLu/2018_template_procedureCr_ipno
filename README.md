@@ -37,7 +37,7 @@ Voici la liste des quelques commandes supplémentaires au LaTeX « de base » et
 - `\RNum{<nombre>}` permet d'afficher un nombre en chiffre romain.
 - `\abs{<texte ou nombre>}` permet d'afficher un caractère entre les barres de valeur absolue, à utiliser en mode math.
 - `\norme{<texte>}` permet d'afficher la norme d'un vecteur (doubles barres), à utiliser en mode math.
-- environnement commentaire `\begin{commentaire}{<auteur du commentaire>}<texte>\end{commentaire}` permet d'afficher le commentaire à un paragraphe du texte.
+- environnement commentaire `\begin{commentaire}{<auteur du commentaire>}<texte>\end{commentaire}` permet d'afficher le commentaire à un paragraphe du texte. Si le commentaire se retrouve sur une page séparée du paragraphe qu'il est censé commenter, placez le commentaire et son paragraphe lié dans un environnement `samepage`: `\begin{samepage}<paragraphe et commentaire>\end{samepage}`.
 
 ## Structure du projet
 ### Fichiers à modifier
