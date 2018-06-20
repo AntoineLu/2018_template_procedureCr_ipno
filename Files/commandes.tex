@@ -15,11 +15,18 @@
 \newcommand{\norme}[1]{\ensuremath\left\| {#1} \right\|}
 
 % Commentaire
+% ou icônes \faCaretRight \faRotateLeft \faRotateRight \faCommentingO
+\makeatletter
 \newenvironment{commentaire}[1]
-{
-\newcommand{\footArg}{#1}
-\paragraph{\faCommentsO}
+{%
+  \nopagebreak
+  \newcommand{\footArg}{#1}%
+  \par\noindent
+  {\normalfont\normalsize\bfseries
+   \faCommentsO}\hskip1em\relax
+}{%
+  ~(\footArg)%
+  \par
+  \addvspace{3.25ex \@plus1ex \@minus.2ex}%
 }
-{
-~(\footArg)
-}
+\makeatother
