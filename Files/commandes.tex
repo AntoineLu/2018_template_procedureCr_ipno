@@ -16,17 +16,10 @@
 
 % Commentaire
 % ou icônes \faCaretRight \faRotateLeft \faRotateRight \faCommentingO
-\makeatletter
 \newenvironment{commentaire}[1]
-{%
-  \nopagebreak
+ {%
+  \par\nopagebreak
   \newcommand{\footArg}{#1}%
-  \par\noindent
-  {\normalfont\normalsize\bfseries
-   \faCommentsO}\hskip1em\relax
-}{%
-  ~(\footArg)%
-  \par
-  \addvspace{3.25ex \@plus1ex \@minus.2ex}%
-}
-\makeatother
+  \makebox[0pt][r]{\makebox[\parindent][l]{\faCommentsO}}\ignorespaces
+ }
+ {\unskip~(\footArg)\par\addvspace{\medskipamount}}
