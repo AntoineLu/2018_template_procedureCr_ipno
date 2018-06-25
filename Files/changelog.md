@@ -2,3 +2,5 @@
 Création projet par Antoine Luboz (luboz@ipno.in2p3.fr)
 # 31/05/2018
 Glossaires ne marchent pas.
+# 25/06/2018
+Ajout de la commande de commentaire.
