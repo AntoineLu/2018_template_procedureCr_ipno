@@ -4,10 +4,21 @@
 
 \begin{document}
     \input{Files/titlepage}
+    \renewcommand{\contentsname}{Sommaire}
     \tableofcontents
     \printglossary
     \newpage
+    
     \input{contenu}
-    \include{Files/biblio}
-    \include{Files/annexes}
+    
+    \if\biblio1
+        \bibliographystyle{Files/unsrt-fr}%pour le français, sinon "unsrt"
+        \bibliography{bibliographie}
+        %\printbibliography
+        \addcontentsline{toc}{chapter}{Bibliographie}
+    \fi
+    \if\annexes1
+        \appendix
+        \input{annexes}
+    \fi
 \end{document}
