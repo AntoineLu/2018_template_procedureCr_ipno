@@ -2,11 +2,9 @@
 % CONFIGURATION DU DOCUMENT
 % On complétera ici les méta-données, titre et auteurs ainsi que les autres configurations de la page ainsi que les fichiers à inclure
 
-% Liste des fichiers à inclure (par défaut tous, commenter pour ne pas inclure)
-\includeonly{
-    Files/bibliographie,% inclure la bibliographie?
-    Files/annexes,% inclure les annexes?
-}
+% Liste des fichiers à inclure (par défaut tous)
+\def\biblio{1} % inclure la bibliographie? 1 oui, 0 non.
+\def\annexes{1} % inclure les annexes? 1 oui, 0 non.
 
 % Écrire ici le titre, l'auteur et la date de publication... Écrire N.A. si non applicable.
 \newcommand*{\type}{<Type du document>}% type de document procès-verbal, procédure, rapport technique...
