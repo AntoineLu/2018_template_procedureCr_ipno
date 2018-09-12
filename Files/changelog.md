@@ -4,3 +4,5 @@ Création projet par Antoine Luboz (luboz@ipno.in2p3.fr)
 Glossaires ne marchent pas.
 # 25/06/2018
 Ajout de la commande de commentaire.
+# 12/09/2018
+Ajout de booléens pour affichage dela biblio et des annexes.
