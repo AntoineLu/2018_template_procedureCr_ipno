@@ -1,5 +1,5 @@
 # 2018_template_procedureCr_ipno - Readme
-Version 1, portage LaTeX par Antoine Luboz (luboz@ipno.in2p3.fr). Mise en page inspirée des documents PV et procédure d'Attrium.
+Version 2, portage LaTeX par Antoine Luboz (luboz@ipno.in2p3.fr). Mise en page inspirée des documents PV et procédure d'Attrium (Véronique Poux).
 
 ## Description
 Template LaTeX pour les comptes rendus, procédures et procès-verbaux.
@@ -8,14 +8,15 @@ Permet la rédaction de comptes-rendus, rapports techniques, procès-verbaux, et
 ## Recommandations, conseils et instructions
 ### Cours LaTeX en ligne
 Voici ci après quelques recommandations pour que la compilation du document se passe au mieux.  
-On conseillera l'utilisation du service en ligne [ShareLaTeX](https://www.sharelatex.com?r=769c675e&rm=d&rs=b) permettant d'oublier les tracats liés à l'installation des _packages_. Pour une utilisation de LaTeX local sous Windows, préférez la distribution [MikTeX](https://miktex.org/download) avec un éditeur comme texmaker, texlive ou directement [notepad++](https://notepad-plus-plus.org/download/v7.5.6.html) pour les plus aguéris. Sous Linux, la distribution TeX Live semble être la plus utilisée.
+On conseillera l'utilisation du service en ligne [Overleaf V2](https://www.sharelatex.com?r=769c675e&rm=d&rs=b) permettant d'oublier les tracas liés à l'installation des _packages_. Pour une utilisation de LaTeX local sous Windows, préférez la distribution [MikTeX](https://miktex.org/download) avec un éditeur comme texmaker, texlive ou directement [notepad++](https://notepad-plus-plus.org/download/v7.5.6.html) pour les plus aguéris. Sous Linux, la distribution TeX Live semble être la plus utilisée.
 De très bon cours sur les bases du LaTeX sont disponible [sur Open Classrooms](https://openclassrooms.com/courses/redigez-des-documents-de-qualite-avec-latex) ou directement [sur ShareLaTeX](https://fr.sharelatex.com/learn/).
 De plus, LaTeX dispose d'une communauté très active et la plupart des problèmes ou questions trouve une réponse très rapide avec une simple recherche Google!
 
 ### Conseils d'ordre général, résumé succin du fonctionnement de LaTeX
-Compiler sur le fichier ```files/main.tex``` avec pdflatex.  
+Compiler sur le fichier ```Files/main.tex``` avec pdfLaTeX.  
 S'il y a un problème d'accentuation, remplacez les lettres accentuées comme suit: `é` devient ```\'{e}```, `à` devient ```\`{a}```, `Ë` devient ```\"{E}```...  
 Utilisez la recherche et remplacement CTRL + F, _cf._ documentation pour d'autres types d'accents.  
+Il est conseillé d'utiliser des images vectorielles (PDF) pour une meilleur qualité du document final.
 Voir la [section suivante](#commandes-supplémentaires) pour les commandes supplémentaires ajoutée.
 
 ### Propriété de l'emphase
@@ -41,23 +42,23 @@ Voici la liste des quelques commandes supplémentaires au LaTeX « de base » et
 
 ## Structure du projet
 ### Fichiers à modifier
-Les seuls fichiers qui nécessitent une modification sont normalement ceux listés à la racine. Chacun contiennent des instructions en en-tête en commentaire LaTeX (`%`). Voici une liste avec description succincte.
+Les seuls fichiers qui nécessitent une modification sont en face avant (listés directement à la racine). Chacun contiennent des instructions en en-tête en commentaire LaTeX (`%`). Voici une liste avec description succincte.
 #### configuration.sty
-Fichier de configuration du document où on indique l'auteur, le titre...
+Fichier de configuration du document où on indique l'auteur, le titre, l'utilisation ou non de bibliographies...
 #### histModifications.tex
 Tableau dans lequel on indique l'historique des modifications de la lignée de fichier, rajoutez une ligne par nouveau fichier diffusé.
 #### resume.tex
 Résumé du fichier que l'on crée qui s'affichera sur la page de garde, restez succins.
-#### bibliographie.bib
-Fichier répertoriant les références bibliographiques au format BibTeX.
 #### contenu.tex
 Le contenu à proprement parler du document, on utilise les balises `\chapter{<titre du chapitre>}`, `\section{<titre de la section>}` et autres commandes LaTeX.
+#### bibliographie.bib
+Fichier répertoriant les références bibliographiques au format BibTeX.
 ##### annexes.tex
 Contient les annexes, écrivez en utilisant la même structure que pour le corps. La numérotation sera effectuée automatiquement et différemment des sections précédent l'annexe.
 ##### Dossier figures ou fichiersAnnexes
-N'hesitez pas à placer les figures et fichiers annexes (code par exemple) dans un dossier à la racine. Les figures seront alors appelées par
+N'hesitez pas à placer les figures et fichiers annexes (extraits de code par exemple) dans un dossier à la racine. Les figures seront alors appelées par
 ```{tex}
-\includegraphics[scale = <0 à 1>, width = <##cm>, height = <##cm>]{<Dossier/nomDuGraphique.extension>}
+\includegraphics[scale = <0 à 1> ou width = <##cm>, height = <##cm>]{<chemin vers le fichier>/<nom du graphique>.<extension>}
 ```
 ##### glossaire.tex
 Permet la création d'un glossaire. Consultez l'aide du package glossaries. (ne marche pour le moment pas)
@@ -71,7 +72,7 @@ répertorie les changements apportés à la structure des fichiers du projet. To
 #### commandes.tex
 répertorie les commandes utilisables (guillemets français, nombres romains...) Dans la suite du document.
 #### main.tex
-est le fichier compilé, les autres fichiers tex sont inclus dans celui-ci.
+est le fichier à compiler avec pdfLaTeX, les autres fichiers tex sont inclus dans celui-ci.
 #### packages.tex
 contient la liste d'appels de packages et leurs options. C'est ici qu'on peut également modifier les options du langage informatique (citation de code avec lstlistings), l'affichage des nombres et unités (siunitx) ou la langue du texte.
 #### titlepage.tex
