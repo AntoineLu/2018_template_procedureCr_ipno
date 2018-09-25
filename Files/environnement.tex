@@ -1,7 +1,8 @@
-% Définitions des nouveaux environnements
+%%% Définitions des nouveaux environnements %%
 
 %% Commentaire
 % ou icônes \faCaretRight \faRotateLeft \faRotateRight \faCommentingO
+% Version 1
 % \newenvironment{commentaire}[1]
 % {
 % % \nopagebreak
@@ -20,7 +21,7 @@
 % }
 
 % ou icônes \faCaretRight \faRotateLeft \faRotateRight \faCommentingO
-% Environnement actuel!
+% Version 2
 % \makeatletter
 % \newenvironment{commentaire}[1]
 % {%
@@ -36,9 +37,26 @@
 % }
 % \makeatother
 
+% Version 3
+% \newenvironment{commentaire}[1]
+%  {%
+%   \par\nopagebreak
+%   {#1}~\faCommentsO~\og
+%  }
+%  {\fg\par\addvspace{\medskipamount}}
+
+% Version 4
+\makeatletter
 \newenvironment{commentaire}[1]
- {%
-  \par\nopagebreak
-  {#1}~\faCommentsO~\og
- }
- {\fg\par\addvspace{\medskipamount}}
+{%
+  \nopagebreak
+  \newcommand{\footArg}{#1}%
+  \par\noindent
+  {\normalfont\normalsize\bfseries
+  \faCommentsO}\hskip1em\relax\og
+}{%
+  \fg~\textit{\footArg}%
+  \par
+  \addvspace{3.25ex \@plus1ex \@minus.2ex}%
+}
+\makeatother
