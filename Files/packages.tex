@@ -2,7 +2,7 @@
 % Vous pouvez ajouter des packages si besoin
 % Évitez les packages trop exotiques ou connus pour poser des problèmes/incompatibilités
 \usepackage[T1]{fontenc}%,OT1 ?
-\usepackage[utf8x]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}%marges de la page
 
 \usepackage{configuration}
@@ -113,12 +113,12 @@
 \makeglossaries
 \loadglsentries{glossaire}
 
-% \usepackage[
-%     backend=biber,
-%     style=numeric,
-%     sorting=ynt
-% ]{biblatex}
-% \addbibresource{bibliographie}
+\usepackage[
+        backend=biber,
+        style=numeric,
+        sorting=ynt
+]{biblatex}
+\addbibresource{\nombibliographie}
 
 \usepackage{fontawesome}
 \usepackage{xcolor}
