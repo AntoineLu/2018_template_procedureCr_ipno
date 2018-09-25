@@ -1,0 +1,44 @@
+% Définitions des nouveaux environnements
+
+%% Commentaire
+% ou icônes \faCaretRight \faRotateLeft \faRotateRight \faCommentingO
+% \newenvironment{commentaire}[1]
+% {
+% % \nopagebreak
+% \unskip
+% % \vspace{0ex}
+% \newcommand{\footArg}{#1}
+% % \begin{quote}
+% % \faCommentsO\;
+% \paragraph{\faCommentsO}
+% }
+% {
+% ~(\footArg)
+% %\;\faSquareO\; %ou \faStop
+% %  \end{quote}
+% % \medskip
+% }
+
+% ou icônes \faCaretRight \faRotateLeft \faRotateRight \faCommentingO
+% Environnement actuel!
+% \makeatletter
+% \newenvironment{commentaire}[1]
+% {%
+%   \nopagebreak
+%   \newcommand{\footArg}{#1}%
+%   \par\noindent
+%   {\normalfont\normalsize\bfseries
+%   \faCommentsO}\hskip1em\relax
+% }{%
+%   ~(\footArg)%
+%   \par
+%   \addvspace{3.25ex \@plus1ex \@minus.2ex}%
+% }
+% \makeatother
+
+\newenvironment{commentaire}[1]
+ {%
+  \par\nopagebreak
+  {#1}~\faCommentsO~\og
+ }
+ {\fg\par\addvspace{\medskipamount}}
