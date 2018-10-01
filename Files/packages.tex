@@ -1,15 +1,15 @@
 % PACKAGES UTILISÉS
 % Vous pouvez ajouter des packages si besoin
 % Évitez les packages trop exotiques ou connus pour poser des problèmes/incompatibilités
-\usepackage[T1]{fontenc}%,OT1 ?
+% \usepackage[T1]{fontenc}%,OT1 ?
+% \usepackage[utf8x]{inputenc}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}%marges de la page
 
 \usepackage{configuration}
 \usepackage{lmodern}
 \usepackage{xstring}
-
-\usepackage{import}
 
 %Nouveaux styles chapitres qui enlève le gros "CHAPITRE"
 \usepackage{titlesec}
@@ -22,11 +22,6 @@
 \usepackage{mathdots}
 
 \usepackage[dvipsnames]{xcolor}
-
-\usepackage{caption}%nouvelles options pour les légendes
-\captionsetup{
-    width = .93\textwidth
-}
 
 \usepackage{siunitx}%affichage des nombres à virgules et des unités, consulter la documentation en ligne
 \sisetup{
@@ -43,24 +38,24 @@
 
 \usepackage{graphicx}
 
-\usepackage{tikz}%dessiner en LaTeX
+\usepackage{tikz}% dessiner en LaTeX
 
 \usepackage{scrextend}
 
-\usepackage{pdfpages}%pour inclure des pages entières de pdf
+\usepackage{pdfpages}% pour inclure des pages entières de pdf
 
-\usepackage{framed}%environnements encadrés
+\usepackage{framed}% environnements encadrés
 
-\usepackage{hyperref} %permet de cliquer sur le sommaire et les figures et liens cliquables
+\usepackage{hyperref}% permet de cliquer sur le sommaire et les figures et liens cliquables
 
-\usepackage[version=4]{mhchem} %affichage des formules chimiques
+\usepackage[version=4]{mhchem}% affichage des formules chimiques
 
 \usepackage[normalem]{ulem}% sous-lignage et sur-lignage \normalem Normal emphasis \ULforem pour revenir à une emphase soulignée. Problème du package ulem. (peut également s'écrire dans le texte)
 
-\usepackage{pgfplots} %plots directement dans latex
-\pgfplotsset{height = 8cm, width = 6.5in}
-%\usepgfplotslibrary{external}%convertir en image
-%\tikzexternalize%convertit les plots en image
+\usepackage{pgfplots}% plots directement dans latex
+\pgfplotsset{compat = 1.15, height = 8cm, width = 6.5in}
+% \usepgfplotslibrary{external}% convertir en image
+% \tikzexternalize% convertit les plots en image
 
 \usepackage[all]{hypcap}
 
@@ -69,6 +64,11 @@
 
 \usepackage{babel}%langues
 \frenchbsetup{StandardLists=true}
+
+\usepackage{caption}%nouvelles options pour les légendes
+\captionsetup{
+    width = .93\textwidth
+}
 
 % Définition des en-tête
 \usepackage{fancyhdr}
@@ -104,21 +104,60 @@
 }
 %\lstset{literate={->}{{$\rightarrow$}}1 {*}{{$\cdot$}}1}% Pour remplacer des caractères dans des lignes de code
 
+%\usepackage{fontspec}
+%\setmainfont{DejaVu Serif}
+%\setmonofont{DejaVu Sans Mono}
 
 %\usepackage{cmbright}
 
 \usepackage{layouts}
 
+\usepackage{import}
+
 \usepackage[xindy, toc, nopostdot, nogroupskip]{glossaries}%glossaires
 \makeglossaries
 \loadglsentries{glossaire}
 
+\usepackage{filecontents}
+\usepackage{csquotes}
+
+%%% Pour la définition des archives hal
+\begin{filecontents*}{eprint-hal_id.dbx}
+\ProvidesFile{eprint-hal_id.dbx}[2018/09/26 HAL/TEL eprints]
+\DeclareDatamodelFields[type=field,datatype=verbatim]{arxiv,hal_id}
+\DeclareDatamodelEntryfields{hal_id}
+\DeclareDatamodelFields[type=field,datatype=literal]{arxivclass}
+\DeclareDatamodelEntryfields{arxivclass}
+\end{filecontents*}
+
 \usepackage[
-        backend=biber,
-        style=numeric,
-        sorting=ynt
+    backend=biber,
+    style=numeric,
+    sorting=ynt,
+    datamodel=eprint-hal_id,
 ]{biblatex}
+
+\usepackage{hyperref}
+
+\DeclareFieldFormat{hal_id}{%
+  \mkbibacro{HAL}\addcolon\space
+  \ifhyperref
+    {\href{https://hal.archives-ouvertes.fr/#1}{\nolinkurl{#1}}}
+    {\nolinkurl{#1}}}
+
+\DeclareFieldAlias{eprint:hal_id}{hal_id}
+\DeclareFieldAlias{eprint:HAL}{eprint:hal}
+
+\renewbibmacro*{eprint}{%
+  \printfield{hal_id}%
+  \newunit\newblock
+  \iffieldundef{eprinttype}
+    {\printfield{eprint}}
+    {\printfield[eprint:\strfield{eprinttype}]{eprint}}}
+%%%
 \addbibresource{\nombibliographie}
 
 \usepackage{fontawesome}
 \usepackage{xcolor}
+
+\usepackage{csvsimple}% Tableaux à partir de CSV
