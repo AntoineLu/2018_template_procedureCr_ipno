@@ -1,8 +1,9 @@
 % NOUVELLES COMMANDES
-% Définition de nouvelles commandes et environnements
+% Définition de nouvelles commandes
 
 % Guillemets
 \newcommand{\frquotes}[1]{\og {#1} \fg}
+% \newcommand{\enquote}[1]{`{#1}'}
 \newcommand{\enquotes}[1]{``{#1}''}
 \newcommand{\dequotes}[1]{\glqq{#1}\grqq}
 
@@ -12,20 +13,3 @@
 % Norme et valeur absolue
 \newcommand{\abs}[1]{\ensuremath\left\vert {#1} \right\vert}
 \newcommand{\norme}[1]{\ensuremath\left\| {#1} \right\|}
-
-% Commentaire
-% ou icônes \faCaretRight \faRotateLeft \faRotateRight \faCommentingO
-\makeatletter
-\newenvironment{commentaire}[1]
-{%
-  \nopagebreak
-  \newcommand{\footArg}{#1}%
-  \par\noindent
-  {\normalfont\normalsize\bfseries
-  \faCommentsO}\hskip1em\relax
-}{%
-  ~(\footArg)%
-  \par
-  \addvspace{3.25ex \@plus1ex \@minus.2ex}%
-}
-\makeatother
