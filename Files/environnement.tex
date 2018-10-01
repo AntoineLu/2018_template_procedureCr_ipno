@@ -2,6 +2,7 @@
 
 %% Commentaire
 % ou icônes \faCaretRight \faRotateLeft \faRotateRight \faCommentingO
+% \if\stylecommentaire1
 % Version 1
 % \newenvironment{commentaire}[1]
 % {
@@ -19,8 +20,9 @@
 % %  \end{quote}
 % % \medskip
 % }
-
 % ou icônes \faCaretRight \faRotateLeft \faRotateRight \faCommentingO
+
+% \if\stylecommentaire2
 % Version 2
 % \makeatletter
 % \newenvironment{commentaire}[1]
@@ -37,6 +39,7 @@
 % }
 % \makeatother
 
+% \if\stylecommentaire3
 % Version 3
 % \newenvironment{commentaire}[1]
 %  {%
@@ -45,6 +48,7 @@
 %  }
 %  {\fg\par\addvspace{\medskipamount}}
 
+% \else
 % Version 4
 \makeatletter
 \newenvironment{commentaire}[1]
@@ -60,3 +64,5 @@
   \addvspace{3.25ex \@plus1ex \@minus.2ex}%
 }
 \makeatother
+
+% \fi
