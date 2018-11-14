@@ -5,7 +5,7 @@
 % \usepackage[utf8x]{inputenc}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}%marges de la page
+\usepackage{geometry}%marges de la page
 
 \usepackage{configuration}
 \usepackage{lmodern}
@@ -19,6 +19,7 @@
 \usepackage{microtype}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{amsthm}
 \usepackage{mathdots}
 
 \usepackage[dvipsnames]{xcolor}
@@ -61,9 +62,6 @@
 
 \usepackage{float}
 \floatplacement{figure}{!h!tbp}%placement par défaut des figures !h!tbp ou H pour ici (fort)
-
-\usepackage{babel}%langues
-\frenchbsetup{StandardLists=true}
 
 \usepackage{caption}%nouvelles options pour les légendes
 \captionsetup{
@@ -137,8 +135,12 @@
     datamodel=eprint-hal_id,
 ]{biblatex}
 
+\usepackage{babel}
+\frenchbsetup{StandardLists=true}
+
 \usepackage{hyperref}
 
+\DefineBibliographyStrings{french}{in={dans},inseries={dans}}
 \DeclareFieldFormat{hal_id}{%
   \mkbibacro{HAL}\addcolon\space
   \ifhyperref
@@ -156,8 +158,15 @@
     {\printfield[eprint:\strfield{eprinttype}]{eprint}}}
 %%%
 \addbibresource{\nombibliographie}
+% \addbibresource{bibliographie_manuelle.bib}
 
 \usepackage{fontawesome}
 \usepackage{xcolor}
 
 \usepackage{csvsimple}% Tableaux à partir de CSV
+
+% \newif\ifdraft
+
+\usepackage{typearea,afterpage}% Changer la taille des pages au milieu des documents
+
+\geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
