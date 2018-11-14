@@ -13,3 +13,6 @@
 % Norme et valeur absolue
 \newcommand{\abs}[1]{\ensuremath\left\vert {#1} \right\vert}
 \newcommand{\norme}[1]{\ensuremath\left\| {#1} \right\|}
+
+% Aligner des signes au numérateur et dénominateur des équations : https://tex.stackexchange.com/questions/84243/align-denominator-of-fraction-to-left
+\newcommand*{\AlignMe}[3][c]{\makebox[\widthof{$#2$}][#1]{$#3$}}
