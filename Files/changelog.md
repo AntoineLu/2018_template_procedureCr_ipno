@@ -8,3 +8,5 @@ Ajout de la commande de commentaire.
 Ajout de booléens pour affichage dela biblio et des annexes.
 # 25/09/2018
 Mise en place du package [biblatex](https://fr.sharelatex.com/learn/latex/Bibliography_management_in_LaTeX).
+# 15/11/2018
+Version 6: Ajout d'une commande `titletextcite`. Prise en compte des champs de bibliographie `HAL_ID` pour les archives HAL.
